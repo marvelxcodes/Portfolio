@@ -1,0 +1,31 @@
+<header>
+	<a href='/'>
+		{"<RK>"}
+	</a>
+	<slot />
+</header>
+
+<style lang='scss'>
+	header {
+		height: 4rem;
+		width: 100vw;
+		padding: 0 3rem;
+
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		display: flex;
+		align-items: center;
+
+		border-bottom: 0.1px solid #6a6a6a70;
+		backdrop-filter: blur(10px);
+	}
+
+	a {
+		font-size: 2rem;
+		color: #fff;
+		font-weight: 700;
+		flex: 1;
+	}
+</style>
