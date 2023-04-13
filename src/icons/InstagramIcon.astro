@@ -1,9 +1,11 @@
 ---
 import Link from "@components/Link.astro";
+import styles from "@styles/icons.module.scss";
 ---
 
 <Link href='https://instagram.com/marvelxcodes'>
 	<svg
+		class={styles.icon}
 		xmlns='http://www.w3.org/2000/svg'
 		width='16'
 		height='16'
@@ -15,9 +17,3 @@ import Link from "@components/Link.astro";
 		></path>
 	</svg>
 </Link>
-
-<style lang='scss'>
-	svg {
-		color: #fff;
-	}
-</style>
