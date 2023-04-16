@@ -6,6 +6,11 @@
 	--secondary-color: #515151;
 }
 
+::selection {
+	background-color: white;
+	color: #000;
+}
+
 html,
 body {
 	padding: 0;
