@@ -21,7 +21,6 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 		<Link href='/blog'>
 			<p style='color:white;font-weight: 600;font-size: 1.2rem;'>Blog</p>
 		</Link>
-
 		<Logo />
 	</Header>
 	<SocialMediaIcons>
@@ -34,14 +33,14 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 	<IntroSection>
 		<div class='section'>
 			<h1>Rama Krishnan</h1>
-			<h2>I'm a Teenager | Developer | Tech Enthusiast</h2>
+			<h2>You may call me <code>@marvelxcodes</code></h2>
+			<p>I'm a Teenager | Developer | Tech Enthusiast</p>
 			<div>
 				<Link href=''>
 					<Button variant='primary'>My Work</Button>
 				</Link>
 				<Button variant='outline'>My Journey</Button>
 			</div>
-			<p class='description'>I am a Full Stack dev</p>
 		</div>
 		<div class='section'>
 			<ProfilePicture />
@@ -54,15 +53,27 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 		background-color: var(--primary-color);
 	}
 
+	// IntroSection Styles
+
 	h1 {
-		color: #fff;
+		color: white;
 		font-size: 3rem;
 	}
 
 	h2 {
 		font-weight: 300;
 		font-size: 1.2rem;
-		color: #fff;
+		color: white;
+	}
+
+	code {
+		color: var(--accent-color);
+	}
+
+	p {
+		color: white;
+		font-size: 1rem;
+		font-weight: 200;
 	}
 
 	.section {
@@ -83,14 +94,12 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 		border-radius: 1rem;
 	}
 
-	.description {
-		color: white;
-	}
-
 	@media (max-width: 1200px) {
 		.section {
 			width: 100%;
 			height: 50%;
 		}
 	}
+
+	// IntroSection Styles
 </style>
