@@ -33,8 +33,7 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 	<IntroSection>
 		<div class='section'>
 			<h1>Rama Krishnan</h1>
-			<h2>You may call me <code>@marvelxcodes</code></h2>
-			<p>I'm a Teenager | Developer | Tech Enthusiast</p>
+			<h2>I'm a Teenager | <b>Developer</b> | Tech Enthusiast</h2>
 			<div>
 				<Link href=''>
 					<Button variant='primary'>My Work</Button>
@@ -58,22 +57,17 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 	h1 {
 		color: white;
 		font-size: 3rem;
+		text-align: center;
+	}
+
+	b {
+		color: var(--accent-color);
 	}
 
 	h2 {
 		font-weight: 300;
 		font-size: 1.2rem;
 		color: white;
-	}
-
-	code {
-		color: var(--accent-color);
-	}
-
-	p {
-		color: white;
-		font-size: 1rem;
-		font-weight: 200;
 	}
 
 	.section {
