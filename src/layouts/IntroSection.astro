@@ -1,0 +1,18 @@
+---
+import { HTMLTag, HTMLAttributes } from "astro/types";
+export interface Props extends HTMLAttributes<HTMLTag> {}
+---
+
+<section {...Astro.props}>
+	<slot />
+</section>
+
+<style lang='scss'>
+	section {
+		// Removes the space taken by Header
+		height: 100vh;
+		width: clamp(80vw, 90vw, 25rem);
+
+		display: grid;
+	}
+</style>
