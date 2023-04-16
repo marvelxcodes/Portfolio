@@ -6,7 +6,8 @@
 	transition: all 0.25s ease-out;
 
 	&:hover {
-		color: #d7d7d7;
+		color: var(--accent-color);
+		filter: drop-shadow(0 0 3rem #fff);
 		transform: scale(140%);
 	}
 }
