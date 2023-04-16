@@ -13,6 +13,7 @@ import InstagramIcon from "@icons/InstagramIcon.astro";
 import MailIcon from "@icons/MailIcon.astro";
 import LinkedinIcon from "@icons/LinkedinIcon.astro";
 import TwitterIcon from "@icons/TwitterIcon.astro";
+import ProfilePicture from "@components/ProfilePicture.astro";
 ---
 
 <PageLayout>
@@ -20,7 +21,6 @@ import TwitterIcon from "@icons/TwitterIcon.astro";
 		<Link href='/blog'>
 			<p style='color:white;font-weight: 600;font-size: 1.2rem;'>Blog</p>
 		</Link>
-
 		<Logo />
 	</Header>
 	<SocialMediaIcons>
@@ -30,24 +30,19 @@ import TwitterIcon from "@icons/TwitterIcon.astro";
 		<TwitterIcon />
 		<MailIcon />
 	</SocialMediaIcons>
-	<IntroSection style='display: flex;'>
+	<IntroSection>
 		<div class='section'>
-			<h1>Rama Krishnan V</h1>
-			<h2>I'm a Teenager | Developer | Tech Enthusiast</h2>
+			<h1>Rama Krishnan</h1>
+			<h2>I'm a Teenager | <b>Developer</b> | Tech Enthusiast</h2>
 			<div>
 				<Link href=''>
 					<Button variant='primary'>My Work</Button>
 				</Link>
 				<Button variant='outline'>My Journey</Button>
 			</div>
-			<p class='description'>I am a Full Stack dev</p>
 		</div>
 		<div class='section'>
-			<img
-				class='profilepicture'
-				src='/ProfilePicture.png'
-				alt='Profile Picture'
-			/>
+			<ProfilePicture />
 		</div>
 	</IntroSection>
 </PageLayout>
@@ -57,19 +52,28 @@ import TwitterIcon from "@icons/TwitterIcon.astro";
 		background-color: var(--primary-color);
 	}
 
+	// IntroSection Styles
+
 	h1 {
-		color: #fff;
+		color: white;
 		font-size: 3rem;
+		text-align: center;
+	}
+
+	b {
+		color: var(--accent-color);
 	}
 
 	h2 {
 		font-weight: 300;
 		font-size: 1.2rem;
-		color: #fff;
+		color: white;
 	}
 
 	.section {
 		width: 50%;
+		height: 100%;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -82,11 +86,14 @@ import TwitterIcon from "@icons/TwitterIcon.astro";
 
 		border: 1px solid white;
 		border-radius: 1rem;
-
-		opacity: 10%;
 	}
 
-	.description {
-		color: white;
+	@media (max-width: 1200px) {
+		.section {
+			width: 100%;
+			height: 50%;
+		}
 	}
+
+	// IntroSection Styles
 </style>

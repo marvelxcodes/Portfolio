@@ -11,8 +11,12 @@ export interface Props extends HTMLAttributes<HTMLTag> {}
 	section {
 		// Removes the space taken by Header
 		height: 100vh;
-		width: clamp(80vw, 90vw, 25rem);
+		width: clamp(80vw, 90vw, 20rem);
 
-		display: grid;
+		display: flex;
+
+		@media (max-width: 1200px) {
+			flex-direction: column-reverse;
+		}
 	}
 </style>

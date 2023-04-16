@@ -4,7 +4,12 @@
 	--accent-color: #ff2288;
 	--primary-color: #000;
 	--secondary-color: #515151;
-	--contrast-color: #fff;
+	font-size: clamp(13px, 1vh + 0.8vw, 20px);
+}
+
+::selection {
+	background-color: white;
+	color: #000;
 }
 
 html,
