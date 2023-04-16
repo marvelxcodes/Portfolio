@@ -1,0 +1,63 @@
+---
+import { HTMLTag, HTMLAttributes } from "astro/types";
+export interface Props extends HTMLAttributes<HTMLTag> {
+	variant: "primary" | "outline";
+}
+
+const { variant } = Astro.props;
+---
+
+<button class={variant}>
+	<slot />
+</button>
+
+<style lang='scss'>
+	button {
+		margin: 1rem;
+		padding: 0.8rem 0;
+		width: 10rem;
+		border-radius: 2rem;
+
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	.primary {
+		background-color: #fff;
+	}
+
+	.outline {
+		position: relative;
+		overflow: hidden;
+
+		background-color: #0000;
+		color: #fff;
+		outline: 1px solid white;
+		box-shadow: 0 0 5px white;
+		transition: all ease-in-out 0.5s;
+
+		&:hover {
+			color: #000;
+		}
+
+		&:after {
+			content: "";
+			z-index: -1;
+			transition: all ease-in-out 0.5s;
+			position: absolute;
+			top: -50%;
+			right: -100%;
+			rotate: 45deg;
+
+			background-color: #fff;
+			color: #000;
+
+			height: 15rem;
+			width: 10rem;
+		}
+
+		&:hover::after {
+			transform: translate(-10rem, 5rem);
+		}
+	}
+</style>
