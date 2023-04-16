@@ -31,7 +31,7 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 		<TwitterIcon />
 		<MailIcon />
 	</SocialMediaIcons>
-	<IntroSection style='display: flex;'>
+	<IntroSection>
 		<div class='section'>
 			<h1>Rama Krishnan V</h1>
 			<h2>I'm a Teenager | Developer | Tech Enthusiast</h2>
@@ -67,6 +67,8 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 
 	.section {
 		width: 50%;
+		height: 100%;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -83,5 +85,12 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 
 	.description {
 		color: white;
+	}
+
+	@media (max-width: 1200px) {
+		.section {
+			width: 100%;
+			height: 50%;
+		}
 	}
 </style>

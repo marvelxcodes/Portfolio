@@ -4,6 +4,7 @@
 	--accent-color: #ff2288;
 	--primary-color: #000;
 	--secondary-color: #515151;
+	font-size: clamp(13px, 1vh + 0.8vw, 20px);
 }
 
 ::selection {
