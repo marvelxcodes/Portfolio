@@ -3,15 +3,16 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev",
+		"dev": "astro dev --host",
 		"start": "astro preview",
 		"build": "astro build",
 		"astro": "astro",
 		"prettier": "pretty-quick --staged"
 	},
 	"dependencies": {
+		"@astrojs/image": "^0.16.6",
 		"@astrojs/mdx": "^0.18.3",
-		"astro": "^2.2.1"
+		"astro": "^2.3.0"
 	},
 	"devDependencies": {
 		"husky": "^8.0.3",
