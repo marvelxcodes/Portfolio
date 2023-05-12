@@ -1,16 +1,17 @@
 .container {
 	padding-top: 4rem;
+	padding: 0 2rem;
+	height: 100vh;
+	position: relative;
 	background: radial-gradient(
 		circle,
 		rgba(202, 8, 255, 0.6) 0%,
-		rgba(0, 0, 0, 0) 30%
+		rgba(0, 0, 0, 0) 40%
 	);
 	background-size: cover;
-	height: 100vh;
-	position: relative;
+
 	display: flex;
 	flex-direction: column;
-
 	align-items: center;
 	justify-content: center;
 }
@@ -18,25 +19,29 @@
 .blur {
 	height: 100vh;
 	width: 100vw;
+
 	position: absolute;
 	top: 0;
 	left: 0;
-	backdrop-filter: blur(5rem);
 	z-index: 3;
+
+	backdrop-filter: blur(5rem);
 }
 
 .greeting {
 	z-index: 5;
 	color: var(--text-color-secondary);
-	font-size: 3rem;
+	font-size: clamp(1rem, 10vw, 3rem);
 	font-weight: 700;
+	text-align: center;
 }
 
 .name {
 	z-index: 5;
 	color: var(--text-color-primary);
-	font-size: 6rem;
+	font-size: clamp(3rem, calc(5vmax + 5vmin), 6rem);
 	font-weight: 800;
+	text-align: center;
 }
 
 .about {
@@ -44,6 +49,7 @@
 	color: var(--text-color-secondary);
 	font-size: 2rem;
 	font-weight: 600;
+	text-align: center;
 }
 
 .gradientText {

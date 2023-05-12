@@ -1,0 +1,90 @@
+// Index Styles
+.container {
+	z-index: 80;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	height: 4rem;
+	width: 100%;
+	padding: 0 2rem;
+
+	display: flex;
+	align-items: center;
+
+	border-bottom: 1px solid var(--border-color);
+
+	background-color: #0000006d;
+	backdrop-filter: blur(2rem);
+}
+
+.title {
+	font-size: 1.2rem;
+	color: var(--text-color-primary);
+	flex: 1;
+}
+
+.hireMeButton {
+	background: white;
+	color: var(--text-color-secondary);
+	border: none;
+
+	padding: 0.8rem 2rem;
+	border-radius: 0.4rem;
+
+	font-size: 1rem;
+	font-weight: 800;
+}
+
+// Route Component Styles
+.route {
+	color: var(--text-color-secondary);
+}
+
+.currentRoute {
+	color: var(--text-color-primary);
+}
+
+.menuIcon {
+	height: 2rem;
+	width: 2rem;
+	color: var(--text-color-primary);
+}
+
+// RoutesContainer styles small devices:
+@media (max-width: 768px) {
+	.routesContainerOpen {
+		height: 100vh;
+		width: 100vw;
+		backdrop-filter: blur(1rem);
+
+		display: flex;
+		flex-direction: column;
+
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	.routesContainerClosed {
+		display: none;
+	}
+	.menuIcon {
+		color: white;
+		height: 2rem;
+		width: 2rem;
+	}
+}
+
+// RoutesContainer styles large devices:
+@media (min-width: 768px) {
+	.routesContainerOpen,
+	.routesContainerClosed {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.menuIcon {
+		display: none;
+	}
+}

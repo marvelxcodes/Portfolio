@@ -23,12 +23,12 @@ export const Section1 = () => {
 			</h1>
 			<h4 style={sfPro.style} className={styles.about}>
 				I&apos;m a
-				<b className={styles.gradientText}>Full Stack Developer</b>from
-				India.
+				<b className={styles.gradientText}>Full Stack Developer</b>and
+				coding prodigy with expertise in React Ecosystem and Golang.
 			</h4>
-			<div className={styles.b}>
-				<button>Hire Me</button>
-				<button>Resume</button>
+			<div className={styles.buttonContainer}>
+				<button className={styles.hireMeButton}>Hire Me</button>
+				<button className={styles.ResumeButton}>Resume</button>
 			</div>
 		</section>
 	);

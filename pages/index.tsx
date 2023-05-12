@@ -22,10 +22,7 @@ export default function Home() {
 				<ParallaxLayer speed={1.5} offset={0}>
 					<Section1 />
 				</ParallaxLayer>
-				<ParallaxLayer speed={5} offset={1}>
-					<Section1 />
-					{/* <Section2 /> */}
-				</ParallaxLayer>
+				<ParallaxLayer speed={5} offset={1}></ParallaxLayer>
 			</Parallax>
 		</>
 	);
