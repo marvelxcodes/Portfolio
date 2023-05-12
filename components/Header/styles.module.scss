@@ -56,7 +56,8 @@
 	.routesContainerOpen {
 		height: 100vh;
 		width: 100vw;
-		backdrop-filter: blur(1rem);
+		backdrop-filter: blur(10rem);
+		background-color: #000a;
 
 		display: flex;
 		flex-direction: column;
@@ -64,11 +65,16 @@
 		position: fixed;
 		top: 0;
 		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
 	}
 	.routesContainerClosed {
 		display: none;
 	}
 	.menuIcon {
+		z-index: 10;
 		color: white;
 		height: 2rem;
 		width: 2rem;
