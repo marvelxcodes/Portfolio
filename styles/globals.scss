@@ -1,0 +1,40 @@
+:root {
+	--background-color: #000;
+	--text-color-primary: #fff;
+	--text-color-secondary: #bbb;
+	--border-color: #888;
+
+	--btn-bg-color: #000;
+
+	--accent-gradient-from: #0811ff;
+	--accent-gradient-mid: #04c2ff;
+	--accent-gradient-to: #ff00ec;
+
+	--gradient-color: linear-gradient(
+		90deg,
+		var(--accent-gradient-from) 0%,
+		var(--accent-gradient-mid) 50%,
+		var(--accent-gradient-to) 100%
+	);
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	max-width: 100vw;
+	overflow-x: hidden;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+body {
+	background-color: #000;
+}
