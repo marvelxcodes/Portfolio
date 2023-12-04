@@ -1,0 +1,12 @@
+
+.bg-mask-image {
+   background-image: url(/text-mask.jpg) 0 0 / cover no-repeat;
+}
+
+.bg-lines {
+   background-image: url(/lines-bg.jpg) 0 0 / cover no-repeat;
+}
+
+body, html {
+   scroll-behavior: smooth;
+}
