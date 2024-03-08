@@ -1,8 +1,8 @@
-import Providers from '@/components/Providers';
 import './globals.scss';
 import '@/lib/tailwind.css';
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
+import Providers from '@/components/Providers';
 
 export const metadata: Metadata = {
 	title: 'Rama Krishnan V',
