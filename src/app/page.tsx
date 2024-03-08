@@ -1,14 +1,19 @@
 import Image from 'next/image';
 import Footer from '@/components/Footer';
-import Link from 'next/link';
-import Sidebar from '@/components/Sidebar';
+
 import Accordion from '@/components/Accordion';
-import { coolvetica } from '@/fonts'
+import { coolvetica } from '@/fonts';
+import Button from '@/components/Button';
+import Link from 'next/link';
+import { FIVERR_PROFILE_URL, GITHUB_PROFILE_URL } from '@/constants';
+import QuoteSection from '@/components/QuoteSection';
+import Container from '@/components/Container';
+import ProjectCard from '@/components/ProjectCard';
 
 export default function Home() {
 	return (
 		<main className='bg-black'>
-			<section className='p-10 container mx-auto'>
+			<Container>
 				<div className='relative'>
 					<Image
 						draggable={false}
@@ -17,10 +22,7 @@ export default function Home() {
 						alt='rama krishnan v'
 						height={200}
 						width={200}
-					></Image>
-					<div className='absolute right-5 top-5 cursor-pointer'>
-						<Sidebar />
-					</div>
+					/>
 				</div>
 				<h1
 					style={coolvetica.style}
@@ -36,25 +38,94 @@ export default function Home() {
 					<h3 className='font-medium text-4xl'>
 						I&apos;m a dedicated developer committed to striking the perfect
 						balance between
-						<span className='text-slate-400'> robustness and efficiency.</span>
+						<span className='glow-effect'> robustness and efficiency.</span>
 					</h3>
 					<h3 className='font-medium text-4xl'>
 						As a devotee of Steve Jobs, my main emphasis lies in{' '}
-						<span className='text-slate-400'>
-							crafting things to perfection
-						</span>{' '}
+						<span className='glow-effect'>crafting things to perfection</span>{' '}
 						while diligently minimizing any flaws.
 					</h3>
 				</div>
-			</section>
-			<section className='p-10 container mx-auto'>
+				<div className='flex flex-wrap gap-6'>
+					<Link href={GITHUB_PROFILE_URL}>
+						<Button>
+							Github
+							<Image
+								src={'/social-media/github.svg'}
+								height={24}
+								width={24}
+								alt='github'
+							/>
+						</Button>
+					</Link>
+					<Link href={FIVERR_PROFILE_URL}>
+						<Button>Hire Me</Button>
+					</Link>
+				</div>
+			</Container>
+
+			{/* My Projects */}
+			<Container>
+				<h1
+					style={coolvetica.style}
+					className='text-4xl md:text-6xl text-white'
+				>
+					My Projects
+				</h1>
+				<div className='grid grid-cols-2 gap-12 my-8'>
+					<ProjectCard
+						name='Rankcraft'
+						description='An Etsy SEO Analytics Tool'
+						imageUrl='/projects/rankcraft1.png'
+						tags={['Saas', 'Client Project']}
+					/>
+					<ProjectCard
+						name='Rankcraft'
+						description='An Etsy SEO Analytics Tool'
+						imageUrl='/projects/rankcraft2.png'
+						tags={['Saas', 'Client Project']}
+					/>
+					<ProjectCard
+						name='Rankcraft'
+						description='An Etsy SEO Analytics Tool'
+						imageUrl='/projects/rankcraft1.png'
+						tags={['Saas', 'Client Project']}
+					/>
+					<ProjectCard
+						name='Rankcraft'
+						description='An Etsy SEO Analytics Tool'
+						imageUrl='/projects/rankcraft2.png'
+						tags={['Saas', 'Client Project']}
+					/>
+					<ProjectCard
+						name='Rankcraft'
+						description='An Etsy SEO Analytics Tool'
+						imageUrl='/projects/rankcraft1.png'
+						tags={['Saas', 'Client Project']}
+					/>
+					<ProjectCard
+						name='Rankcraft'
+						description='An Etsy SEO Analytics Tool'
+						imageUrl='/projects/rankcraft2.png'
+						tags={['Saas', 'Client Project']}
+					/>
+				</div>
+			</Container>
+
+			<QuoteSection author='Steve Jobs'>
+				We&apos;re here to put a dent in the universe. Otherwise why else even
+				be here?
+			</QuoteSection>
+
+			{/* Frequently asked Questions */}
+			<Container>
 				<div className='hs-accordion-group'>
 					<Accordion
 						question='hi hello'
 						answer='rest 12'
 					/>
 				</div>
-			</section>
+			</Container>
 			<Footer />
 		</main>
 	);

@@ -39,7 +39,7 @@ const Footer = () => {
 				/>
 			</div>
 			<div>
-				<p className='text-sm'>© 2023 theramakrishnan.com. All rights reserved.</p>
+				<p className='text-sm'>© 2024 theramakrishnan.com. All rights reserved.</p>
 			</div>
 		</footer>
 	);

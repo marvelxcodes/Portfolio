@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 
 export const metadata: Metadata = {
-	title: 'MarvelXCodes',
-	description: 'A Blog by Rama Krishnan V',
+	title: 'Rama Krishnan V',
+	description: 'I am an Aesthetic Developer',
 	colorScheme: 'dark',
 	themeColor: '#000'
 };
