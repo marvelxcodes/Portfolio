@@ -20,7 +20,7 @@ const ProjectCard = ({
 	return (
 		<div
 			style={Satoshi.style}
-			className='rounded-lg  overflow-hidden bg-white w-max h-max row-auto'
+			className='rounded-lg overflow-hidden bg-white h-max'
 		>
 			<div className='relative'>
 				<Image

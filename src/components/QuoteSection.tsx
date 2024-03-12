@@ -1,5 +1,9 @@
+'use client';
+import { useInView } from 'framer-motion';
 import Container from './Container';
 import { Satoshi } from '@/fonts';
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 type QuoteSectionProps = {
 	children: string;
@@ -7,27 +11,45 @@ type QuoteSectionProps = {
 };
 
 const QuoteSection = ({ author, children }: QuoteSectionProps) => {
+	const containerRef = useRef<HTMLDivElement>(null);
+	const isInView = useInView(containerRef);
+
 	return (
 		<Container
-			className='space-y-6'
+			ref={containerRef}
+			className='space-y-6 text-white'
 			style={Satoshi.style}
 		>
-			<blockquote
-				style={Satoshi.style}
-				className='text-4xl w-max flex relative flex-col'
+			<motion.div
+				initial={{
+					opacity: 0,
+					rotateX: 90
+				}}
+				whileInView={{
+					opacity: 1,
+					rotateX: 0
+				}}
+				transition={{
+					velocity: 0.1
+				}}
 			>
-				&quot;{children}&quot;
-			</blockquote>
-			<p className='text-xl font-medium'>
-				This philosophy is what drives the Dev in myself.
-				<span
-					className='glow-effect text-2xl
-				'
+				<blockquote
+					style={Satoshi.style}
+					className='text-4xl w-max flex relative flex-col'
 				>
-					{' '}
-					- Steve Jobs
-				</span>
-			</p>
+					&quot;{children}&quot;
+				</blockquote>
+				<p className='text-xl font-medium'>
+					This philosophy is what drives the Dev in myself.
+					<span
+						className='glow-effect text-2xl
+					'
+					>
+						{' '}
+						- {author}
+					</span>
+				</p>
+			</motion.div>
 		</Container>
 	);
 };

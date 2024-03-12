@@ -1,19 +1,23 @@
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 
-import Accordion from '@/components/Accordion';
-import { coolvetica } from '@/fonts';
-import Button from '@/components/Button';
 import Link from 'next/link';
-import { FIVERR_PROFILE_URL, GITHUB_PROFILE_URL } from '@/constants';
-import QuoteSection from '@/components/QuoteSection';
+import { motion } from 'framer-motion';
+import Button from '@/components/Button';
+import { coolvetica, Satoshi } from '@/fonts';
 import Container from '@/components/Container';
+import Accordion from '@/components/Accordion';
 import ProjectCard from '@/components/ProjectCard';
+import QuoteSection from '@/components/QuoteSection';
+import { FIVERR_PROFILE_URL, GITHUB_PROFILE_URL } from '@/constants';
+import SectionTitle from '@/components/SectionTitle';
+import SlideIn from '@/components/SlideIn';
 
 export default function Home() {
 	return (
 		<main className='bg-black'>
-			<Container>
+			{/* Hero Section */}
+			<Container className='min-h-screen'>
 				<div className='relative'>
 					<Image
 						draggable={false}
@@ -34,7 +38,10 @@ export default function Home() {
 					</span>
 					<span> based in India.</span>
 				</h1>
-				<div className='grid gap-y-8 py-8'>
+				<div
+					style={Satoshi.style}
+					className='grid gap-y-8 py-8 text-white'
+				>
 					<h3 className='font-medium text-4xl'>
 						I&apos;m a dedicated developer committed to striking the perfect
 						balance between
@@ -66,49 +73,65 @@ export default function Home() {
 
 			{/* My Projects */}
 			<Container>
-				<h1
-					style={coolvetica.style}
-					className='text-4xl md:text-6xl text-white'
-				>
-					My Projects
-				</h1>
-				<div className='grid grid-cols-2 gap-12 my-8'>
-					<ProjectCard
-						name='Rankcraft'
-						description='An Etsy SEO Analytics Tool'
-						imageUrl='/projects/rankcraft1.png'
-						tags={['Saas', 'Client Project']}
-					/>
-					<ProjectCard
-						name='Rankcraft'
-						description='An Etsy SEO Analytics Tool'
-						imageUrl='/projects/rankcraft2.png'
-						tags={['Saas', 'Client Project']}
-					/>
-					<ProjectCard
-						name='Rankcraft'
-						description='An Etsy SEO Analytics Tool'
-						imageUrl='/projects/rankcraft1.png'
-						tags={['Saas', 'Client Project']}
-					/>
-					<ProjectCard
-						name='Rankcraft'
-						description='An Etsy SEO Analytics Tool'
-						imageUrl='/projects/rankcraft2.png'
-						tags={['Saas', 'Client Project']}
-					/>
-					<ProjectCard
-						name='Rankcraft'
-						description='An Etsy SEO Analytics Tool'
-						imageUrl='/projects/rankcraft1.png'
-						tags={['Saas', 'Client Project']}
-					/>
-					<ProjectCard
-						name='Rankcraft'
-						description='An Etsy SEO Analytics Tool'
-						imageUrl='/projects/rankcraft2.png'
-						tags={['Saas', 'Client Project']}
-					/>
+				<SectionTitle
+					textLeft='Check out the stuff'
+					textRight='That I have Engineered'
+				/>
+				<div className='flex flex-grow-0 gap-x-12'>
+					<div className='grid my-8'>
+						<SlideIn>
+							<ProjectCard
+								name='Rankcraft'
+								description='An Etsy SEO Analytics Tool'
+								imageUrl='/projects/rankcraft1.png'
+								tags={['Saas', 'Client Project']}
+							/>
+						</SlideIn>
+						<SlideIn>
+							<ProjectCard
+								name='Rankcraft'
+								description='An Etsy SEO Analytics Tool'
+								imageUrl='/projects/rankcraft2.png'
+								tags={['Saas', 'Client Project']}
+							/>
+						</SlideIn>
+
+						<SlideIn>
+							<ProjectCard
+								name='Rankcraft'
+								description='An Etsy SEO Analytics Tool'
+								imageUrl='/projects/rankcraft1.png'
+								tags={['Saas', 'Client Project']}
+							/>
+						</SlideIn>
+					</div>
+					<div className='grid gap-y-12 my-8 py-20'>
+						<SlideIn from='right'>
+							<ProjectCard
+								name='Rankcraft'
+								description='An Etsy SEO Analytics Tool'
+								imageUrl='/projects/rankcraft2.png'
+								tags={['Saas', 'Client Project']}
+							/>
+						</SlideIn>
+						<SlideIn from='right'>
+							<ProjectCard
+								name='Rankcraft'
+								description='An Etsy SEO Analytics Tool'
+								imageUrl='/projects/rankcraft1.png'
+								tags={['Saas', 'Client Project']}
+							/>
+						</SlideIn>
+
+						<SlideIn from='right'>
+							<ProjectCard
+								name='Rankcraft'
+								description='An Etsy SEO Analytics Tool'
+								imageUrl='/projects/rankcraft2.png'
+								tags={['Saas', 'Client Project']}
+							/>
+						</SlideIn>
+					</div>
 				</div>
 			</Container>
 

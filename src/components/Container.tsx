@@ -4,10 +4,10 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react';
 const Container = ({
 	className,
 	...props
-}: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => {
+}: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
 	return (
-		<section
-			className={cn("p-10 container mx-auto",className)}
+		<div
+			className={cn('p-10 container mx-auto', className)}
 			{...props}
 		/>
 	);
