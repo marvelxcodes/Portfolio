@@ -1,6 +1,7 @@
 import { Satoshi } from '@/fonts';
 import Image from 'next/image';
 import Link from 'next/link';
+import { cn } from '@/utils/cn';
 
 export type ProjectCardProps = {
 	name: string;
@@ -8,6 +9,7 @@ export type ProjectCardProps = {
 	imageUrl: string;
 	tags: string[];
 	url?: string;
+	color: string;
 };
 
 const ProjectCard = ({
@@ -15,7 +17,8 @@ const ProjectCard = ({
 	description,
 	name,
 	tags,
-	url
+	url,
+	color
 }: ProjectCardProps) => {
 	return (
 		<div
@@ -30,7 +33,9 @@ const ProjectCard = ({
 					width={600}
 				/>{' '}
 				<div className='px-6 absolute  bottom-0 bg-gradient-to-t from-white w-full'>
-					<h3 className='text-violet-600 text-3xl font-semibold'>{name}</h3>
+					<h3 className={cn(`text-${color}`, 'text-3xl font-semibold')}>
+						{name}
+					</h3>
 				</div>
 			</div>
 
@@ -39,7 +44,10 @@ const ProjectCard = ({
 					<p className='text-black px-6 font-medium'>{description}</p>
 					<div>
 						{tags?.map((tag, index) => (
-							<div key={index}>
+							<div
+								className=''
+								key={index}
+							>
 								<span>{tag}</span>
 							</div>
 						))}

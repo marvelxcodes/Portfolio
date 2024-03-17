@@ -85,6 +85,7 @@ export default function Home() {
 								description='An Etsy SEO Analytics Tool'
 								imageUrl='/projects/rankcraft1.png'
 								tags={['Saas', 'Client Project']}
+								color='violet-600'
 							/>
 						</SlideIn>
 						<SlideIn>
@@ -93,6 +94,7 @@ export default function Home() {
 								description='An Etsy SEO Analytics Tool'
 								imageUrl='/projects/rankcraft2.png'
 								tags={['Saas', 'Client Project']}
+								color='violet-600'
 							/>
 						</SlideIn>
 
@@ -102,6 +104,7 @@ export default function Home() {
 								description='An Etsy SEO Analytics Tool'
 								imageUrl='/projects/rankcraft1.png'
 								tags={['Saas', 'Client Project']}
+								color='violet-600'
 							/>
 						</SlideIn>
 					</div>
@@ -112,6 +115,7 @@ export default function Home() {
 								description='An Etsy SEO Analytics Tool'
 								imageUrl='/projects/rankcraft2.png'
 								tags={['Saas', 'Client Project']}
+								color='violet-600'
 							/>
 						</SlideIn>
 						<SlideIn from='right'>
@@ -120,6 +124,7 @@ export default function Home() {
 								description='An Etsy SEO Analytics Tool'
 								imageUrl='/projects/rankcraft1.png'
 								tags={['Saas', 'Client Project']}
+								color='violet-600'
 							/>
 						</SlideIn>
 
@@ -129,6 +134,7 @@ export default function Home() {
 								description='An Etsy SEO Analytics Tool'
 								imageUrl='/projects/rankcraft2.png'
 								tags={['Saas', 'Client Project']}
+								color='violet-600'
 							/>
 						</SlideIn>
 					</div>
@@ -140,15 +146,42 @@ export default function Home() {
 				be here?
 			</QuoteSection>
 
+			{/* Services */}
+			<Container className='space-y-8 my-16'>
+				<h1 className='text-white text-8xl font-semibold'>
+					Services that I Offer
+				</h1>
+				<ul className=' text-white space-y-6 text-5xl font-medium select-none'>
+					<SlideIn>
+						<li>Blogs</li>
+					</SlideIn>
+					<SlideIn>
+						<li>SaaS Apps</li>
+					</SlideIn>
+					<SlideIn>
+						<li>Landing Pages</li>
+					</SlideIn>
+					<SlideIn>
+						<li>UI / UX Designs</li>
+					</SlideIn>
+					<SlideIn>
+						<li>Chrome Extensions</li>
+					</SlideIn>
+					<SlideIn>
+						<li>E-Commerce Websites</li>
+					</SlideIn>
+				</ul>
+			</Container>
+
 			{/* Frequently asked Questions */}
-			<Container>
+			{/* <Container>
 				<div className='hs-accordion-group'>
 					<Accordion
 						question='hi hello'
 						answer='rest 12'
 					/>
 				</div>
-			</Container>
+			</Container> */}
 			<Footer />
 		</main>
 	);

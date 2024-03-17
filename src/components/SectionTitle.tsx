@@ -18,39 +18,38 @@ type SectionTitleProps = {
 };
 
 const SectionTitle = ({ textLeft, textRight }: SectionTitleProps) => {
-	const textContainerRef = useRef<HTMLDivElement>(null);
-	const {} = useInView(textContainerRef, {});
-	const { scrollYProgress } = useScroll({
-		target: textContainerRef,
-		smooth: 10
-	});
-
-	const translateX = useSpring(scrollYProgress, {
-		damping: 0.05
-	});
 	return (
-		<motion.div
-			style={coolvetica.style}
-			ref={textContainerRef}
-		>
+		<motion.div className='overflow-x-hidden py-3' style={coolvetica.style}>
 			<motion.h1
-				translate='yes'
-				style={{
-					translateX
+				initial={{
+					opacity: 0,
+					translateX: -200
 				}}
-				// initial={{
-				// 	opacity: 0,
-				// 	translateX: -100
-				// }}
-				// whileInView={{
-				// 	opacity: 1,
-				// 	translateX: 0
-				// }}
-				className='text-4xl relative transition-transform inline-block md:text-6xl text-white'
+				whileInView={{
+					opacity: 1,
+					translateX: 0
+				}}
+				className='text-4xl inline-block md:text-6xl text-white'
+				transition={{
+					repeat: 0
+				}}
 			>
 				{textLeft}
 			</motion.h1>
-			<motion.h1 className='text-4xl text-right font-medium md:text-8xl text-white'>
+			<motion.h1
+				initial={{
+					opacity: 0,
+					translateX: 200
+				}}
+				whileInView={{
+					opacity: 1,
+					translateX: 0
+				}}
+				transition={{
+					repeat: 0
+				}}
+				className='text-4xl text-right font-medium md:text-8xl text-white'
+			>
 				{textRight}
 			</motion.h1>
 		</motion.div>

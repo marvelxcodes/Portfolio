@@ -7,8 +7,6 @@ import Providers from '@/components/Providers';
 export const metadata: Metadata = {
 	title: 'Rama Krishnan V',
 	description: 'I am an Aesthetic Developer',
-	colorScheme: 'dark',
-	themeColor: '#000'
 };
 
 const RootLayout = ({ children }: PropsWithChildren) => {
