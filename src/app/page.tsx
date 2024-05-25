@@ -1,17 +1,17 @@
-import Image from 'next/image';
-import Footer from '@/components/Footer';
-
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Button from '@/components/Button';
+import Footer from '@/components/Footer';
+import SlideIn from '@/components/SlideIn';
 import { coolvetica, Satoshi } from '@/fonts';
 import Container from '@/components/Container';
 import Accordion from '@/components/Accordion';
 import ProjectCard from '@/components/ProjectCard';
 import QuoteSection from '@/components/QuoteSection';
-import { FIVERR_PROFILE_URL, GITHUB_PROFILE_URL } from '@/constants';
 import SectionTitle from '@/components/SectionTitle';
-import SlideIn from '@/components/SlideIn';
+import SkillProgress from '@/components/SkillProgress';
+import { FIVERR_PROFILE_URL, GITHUB_PROFILE_URL, SKILLSETS } from '@/constants';
 
 export default function Home() {
 	return (
@@ -71,14 +71,30 @@ export default function Home() {
 				</div>
 			</Container>
 
+			{/* My Skillset */}
+			<Container>
+				<SectionTitle
+					textLeft='Get to know'
+					textRight='What I am Good at'
+				/>
+				<div className='grid grid-cols-3 gap-6'>
+					{SKILLSETS.map((skill) => (
+						<SkillProgress
+							key={skill.name}
+							{...skill}
+						/>
+					))}
+				</div>
+			</Container>
+
 			{/* My Projects */}
 			<Container>
 				<SectionTitle
-					textLeft='Check out the stuff'
-					textRight='That I have Engineered'
+					textLeft='Check out stuff'
+					textRight='That I Engineered'
 				/>
-				<div className='flex flex-grow-0 gap-x-12'>
-					<div className='grid my-8'>
+				<div className='flex w-full overflow-hidden gap-x-12'>
+					<div className='flex flex-col my-8 gap-y-12'>
 						<SlideIn>
 							<ProjectCard
 								name='Rankcraft'
@@ -108,7 +124,7 @@ export default function Home() {
 							/>
 						</SlideIn>
 					</div>
-					<div className='grid gap-y-12 my-8 py-20'>
+					<div className='flex flex-col gap-y-12 my-8 py-20'>
 						<SlideIn from='right'>
 							<ProjectCard
 								name='Rankcraft'

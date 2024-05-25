@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { coolvetica } from '@/fonts';
+import {} from '@/fonts';
 
 const Button = ({
 	className,
@@ -11,9 +11,8 @@ const Button = ({
 >) => {
 	return (
 		<button
-			style={coolvetica.style}
 			className={cn(
-				'text-xl bg-white inline-flex gap-x-3 text-black px-8 rounded-full tracking-wider hover:scale-105 transition-transform py-3',
+				'text-lg font-medium bg-white inline-flex hover:bg-neutral-300 transition-colors gap-x-3 text-black px-8 rounded-full py-3',
 				className
 			)}
 			{...props}

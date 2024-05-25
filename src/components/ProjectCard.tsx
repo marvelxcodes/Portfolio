@@ -1,7 +1,8 @@
-import { Satoshi } from '@/fonts';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import { cn } from '@/utils/cn';
+import { Satoshi } from '@/fonts';
+import selectRandom from '@/utils/random';
 
 export type ProjectCardProps = {
 	name: string;
@@ -20,6 +21,14 @@ const ProjectCard = ({
 	url,
 	color
 }: ProjectCardProps) => {
+	const COLORS = [
+		'#B948B3',
+		'#072268',
+		'#4178E3',
+		'#E20854',
+		'#CD8648',
+		'#F34B18'
+	];
 	return (
 		<div
 			style={Satoshi.style}
@@ -39,13 +48,14 @@ const ProjectCard = ({
 				</div>
 			</div>
 
-			<div className='flex'>
+			<div className='flex px-6 pb-6'>
 				<div>
-					<p className='text-black px-6 font-medium'>{description}</p>
-					<div>
+					<p className='text-black font-medium'>{description}</p>
+					<div className='flex flex-wrap gap-3 py-3'>
 						{tags?.map((tag, index) => (
 							<div
-								className=''
+								style={{ backgroundColor: selectRandom(COLORS) }}
+								className='px-3 text-white rounded-full font-medium'
 								key={index}
 							>
 								<span>{tag}</span>

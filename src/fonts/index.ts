@@ -1,7 +1,7 @@
 import localFont from 'next/font/local';
 
 export const coolvetica = localFont({
-	src: './Coolvetica.otf'
+	src: './Coolvetica.otf',
 });
 
 export const SpritzAndDelicious = localFont({

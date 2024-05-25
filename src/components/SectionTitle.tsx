@@ -19,7 +19,10 @@ type SectionTitleProps = {
 
 const SectionTitle = ({ textLeft, textRight }: SectionTitleProps) => {
 	return (
-		<motion.div className='overflow-x-hidden py-3' style={coolvetica.style}>
+		<motion.div
+			className='max-w-full mx-auto py-3 w-max'
+			style={coolvetica.style}
+		>
 			<motion.h1
 				initial={{
 					opacity: 0,
@@ -29,7 +32,7 @@ const SectionTitle = ({ textLeft, textRight }: SectionTitleProps) => {
 					opacity: 1,
 					translateX: 0
 				}}
-				className='text-4xl inline-block md:text-6xl text-white'
+				className='text-4xl -ml-32 inline-block md:text-6xl text-white'
 				transition={{
 					repeat: 0
 				}}
@@ -48,7 +51,7 @@ const SectionTitle = ({ textLeft, textRight }: SectionTitleProps) => {
 				transition={{
 					repeat: 0
 				}}
-				className='text-4xl text-right font-medium md:text-8xl text-white'
+				className='text-4xl -mr-32 text-right font-medium md:text-8xl text-white'
 			>
 				{textRight}
 			</motion.h1>

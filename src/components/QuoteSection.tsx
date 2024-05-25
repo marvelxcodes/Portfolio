@@ -35,7 +35,7 @@ const QuoteSection = ({ author, children }: QuoteSectionProps) => {
 			>
 				<blockquote
 					style={Satoshi.style}
-					className='text-4xl w-max flex relative flex-col'
+					className='text-4xl flex relative flex-col'
 				>
 					&quot;{children}&quot;
 				</blockquote>
