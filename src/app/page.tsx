@@ -1,17 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import Button from '@/components/Button';
 import Footer from '@/components/Footer';
 import SlideIn from '@/components/SlideIn';
 import { coolvetica, Satoshi } from '@/fonts';
 import Container from '@/components/Container';
-import Accordion from '@/components/Accordion';
 import ProjectCard from '@/components/ProjectCard';
 import QuoteSection from '@/components/QuoteSection';
 import SectionTitle from '@/components/SectionTitle';
 import SkillProgress from '@/components/SkillProgress';
-import { FIVERR_PROFILE_URL, GITHUB_PROFILE_URL, SKILLSETS } from '@/constants';
+import { GITHUB_PROFILE_URL, SKILLSETS } from '@/constants';
 
 export default function Home() {
 	return (
@@ -21,8 +19,8 @@ export default function Home() {
 				<div className='relative'>
 					<Image
 						draggable={false}
-						className='object-cover w-64 h-64 rounded-full'
-						src={'/myself.jpg'}
+						className='object-cover object-[0_-1.5rem] w-64 h-64 rounded-full'
+						src={'/myself.png'}
 						alt='rama krishnan v'
 						height={200}
 						width={200}
@@ -38,21 +36,21 @@ export default function Home() {
 					</span>
 					<span> based in India.</span>
 				</h1>
-				<div
-					style={Satoshi.style}
-					className='grid gap-y-8 py-8 text-white'
-				>
-					<h3 className='font-medium text-4xl'>
-						I&apos;m a dedicated developer committed to striking the perfect
-						balance between
-						<span className='glow-effect'> robustness and efficiency.</span>
-					</h3>
-					<h3 className='font-medium text-4xl'>
-						As a devotee of Steve Jobs, my main emphasis lies in{' '}
-						<span className='glow-effect'>crafting things to perfection</span>{' '}
-						while diligently minimizing any flaws.
-					</h3>
-				</div>
+					<div
+						style={Satoshi.style}
+						className='grid gap-y-8 py-8 text-white'
+					>
+						<h3 className='font-medium text-4xl'>
+							I&apos;m a dedicated developer committed to striking the perfect
+							balance between
+							<span className='glow-effect'> robustness and efficiency.</span>
+						</h3>
+						<h3 className='font-medium text-4xl'>
+							As a devotee of Steve Jobs, my main emphasis lies in{' '}
+							<span className='glow-effect'>crafting things to perfection</span>{' '}
+							while diligently minimizing any flaws.
+						</h3>
+					</div>
 				<div className='flex flex-wrap gap-6'>
 					<Link href={GITHUB_PROFILE_URL}>
 						<Button>
@@ -65,8 +63,8 @@ export default function Home() {
 							/>
 						</Button>
 					</Link>
-					<Link href={FIVERR_PROFILE_URL}>
-						<Button>Hire Me</Button>
+					<Link href={'/blog'}>
+						<Button>My Blog</Button>
 					</Link>
 				</div>
 			</Container>
@@ -77,7 +75,7 @@ export default function Home() {
 					textLeft='Get to know'
 					textRight='What I am Good at'
 				/>
-				<div className='grid grid-cols-3 gap-6'>
+				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
 					{SKILLSETS.map((skill) => (
 						<SkillProgress
 							key={skill.name}
@@ -88,13 +86,13 @@ export default function Home() {
 			</Container>
 
 			{/* My Projects */}
-			<Container>
+			<Container className='relative'>
 				<SectionTitle
 					textLeft='Check out stuff'
 					textRight='That I Engineered'
 				/>
-				<div className='flex w-full overflow-hidden gap-x-12'>
-					<div className='flex flex-col my-8 gap-y-12'>
+				<div className='flex max-md:flex-col w-full overflow-hidden gap-x-12'>
+					<div className='flex flex-1 flex-col my-8 gap-y-12'>
 						<SlideIn>
 							<ProjectCard
 								name='Rankcraft'
@@ -113,7 +111,6 @@ export default function Home() {
 								color='violet-600'
 							/>
 						</SlideIn>
-
 						<SlideIn>
 							<ProjectCard
 								name='Rankcraft'
@@ -124,7 +121,7 @@ export default function Home() {
 							/>
 						</SlideIn>
 					</div>
-					<div className='flex flex-col gap-y-12 my-8 py-20'>
+					<div className='flex flex-1 flex-col gap-y-12 my-8 pt-20'>
 						<SlideIn from='right'>
 							<ProjectCard
 								name='Rankcraft'
@@ -155,6 +152,13 @@ export default function Home() {
 						</SlideIn>
 					</div>
 				</div>
+				<div className='absolute flex items-end justify-center bottom-12 left-0 h-96 w-full bg-gradient-to-t from-black'>
+					<a href={GITHUB_PROFILE_URL}>
+						<button className='bg-white px-6 py-3 rounded-full font-medium'>
+							Show More
+						</button>
+					</a>
+				</div>
 			</Container>
 
 			<QuoteSection author='Steve Jobs'>
@@ -163,11 +167,11 @@ export default function Home() {
 			</QuoteSection>
 
 			{/* Services */}
-			<Container className='space-y-8 my-16'>
-				<h1 className='text-white text-8xl font-semibold'>
+			<Container className='space-y-8 pb-0 my-16'>
+				<h1 className='text-white text-5xl xl:text-8xl font-semibold'>
 					Services that I Offer
 				</h1>
-				<ul className=' text-white space-y-6 text-5xl font-medium select-none'>
+				<ul className=' text-white space-y-6 text-3xl xl:text-5xl font-medium select-none'>
 					<SlideIn>
 						<li>Blogs</li>
 					</SlideIn>

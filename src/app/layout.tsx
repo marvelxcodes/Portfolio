@@ -6,7 +6,7 @@ import Providers from '@/components/Providers';
 
 export const metadata: Metadata = {
 	title: 'Rama Krishnan V',
-	description: 'I am an Aesthetic Developer',
+	description: 'I am an Aesthetic Developer'
 };
 
 const RootLayout = ({ children }: PropsWithChildren) => {

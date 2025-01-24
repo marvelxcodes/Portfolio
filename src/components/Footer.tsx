@@ -3,7 +3,7 @@ import SocialMediaLink from './SocialMediaLink';
 
 const Footer = () => {
 	return (
-		<footer className='border-t space-y-5 text-center py-5 text-white'>
+		<footer className='border-t border-neutral-900 space-y-5 text-center py-5 text-neutral-600 font-medium'>
 			<div className='space-x-8 font-medium text-center'>
 				<Link
 					className='text-center'

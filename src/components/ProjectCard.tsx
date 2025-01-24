@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { cn } from '@/utils/cn';
 import { Satoshi } from '@/fonts';
 import selectRandom from '@/utils/random';
+import ProjectCardCarousel from './ProjectCardCarousel';
 
 export type ProjectCardProps = {
 	name: string;
@@ -35,12 +36,10 @@ const ProjectCard = ({
 			className='rounded-lg overflow-hidden bg-white h-max'
 		>
 			<div className='relative'>
-				<Image
-					src={imageUrl}
-					alt={name}
-					height={600}
-					width={600}
-				/>{' '}
+				<ProjectCardCarousel
+					name={name}
+					imageUrls={[imageUrl, imageUrl, imageUrl]}
+				/>
 				<div className='px-6 absolute  bottom-0 bg-gradient-to-t from-white w-full'>
 					<h3 className={cn(`text-${color}`, 'text-3xl font-semibold')}>
 						{name}
