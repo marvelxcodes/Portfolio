@@ -174,9 +174,15 @@
 	}
 
 	.line-mask {
+		--descender-room: 0.22em;
 		display: block;
 		overflow: clip;
 		overflow-clip-margin: 0.08em;
+		margin-block-end: calc(var(--descender-room) * -1);
+	}
+
+	.line-mask > [data-line] {
+		padding-block-end: var(--descender-room);
 	}
 
 	.no-scrollbar {
