@@ -51,7 +51,6 @@ const Footer = () => {
 					<p>
 						© {year} {person.name}
 					</p>
-					<p>Built with Next.js · GSAP · WebGL</p>
 				</div>
 			</div>
 
