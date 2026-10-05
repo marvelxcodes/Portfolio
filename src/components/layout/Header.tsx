@@ -25,7 +25,7 @@ const Header = () => {
 					<Link href='/' aria-label='Home' onClick={closeMenu} className='group flex size-(--header-h) shrink-0 items-center justify-center bg-ink text-paper'>
 						<span className='text-lg font-medium tracking-[-0.06em] transition-transform duration-700 ease-out-expo group-hover:scale-110'>{person.initials}</span>
 					</Link>
-					<div className='pl-5 lg:pl-20'>
+					<div className='flex flex-1 justify-center'>
 						<Location />
 					</div>
 				</div>
