@@ -1,0 +1,47 @@
+export const metadata = {
+  title: 'What building a Linux distribution taught me about scope',
+  description:
+    'CrownOS started as a config repo. Somewhere along the way it became an operating system, and the lesson was about restraint.',
+  date: '2026-01-28',
+  tag: 'CrownOS'
+};
+
+[CrownOS](https://crownos.org) did not start as an operating system. It started as a dotfiles repository — compositor config, a shell setup, a few scripts. Every addition was small and obviously useful. That is precisely how scope gets away from you.
+
+## Small yeses compound
+
+Nobody decides to build a distribution. You decide to script your installs, then to version the package list, then to ship an ISO so a fresh machine matches the old one. Each step is reasonable in isolation. Together they turn a weekend project into something with users and a release process.
+
+> The dangerous features are never the big ones. They are the ones that are too small to say no to.
+
+## Draw the boundary in writing
+
+What finally helped was writing down what the project is *not*. For CrownOS that list looks roughly like this:
+
+- Not a new kernel, init system or package manager — it builds on Arch.
+- Not a general-purpose desktop for everyone — it is opinionated and agent-native.
+- Not a cloud product — models and data stay on the device.
+
+A written "not" list turns every new idea into a quick check instead of a debate.
+
+## Configuration is a product surface
+
+Once other people run your system, configuration stops being a personal detail and becomes an interface. A single, typed configuration file is easier to document, validate and migrate than a dozen tools each with their own format:
+
+```toml title="crown.toml"
+[compositor]
+mode = "tiling"
+gaps = 8
+
+[agents]
+local_models = true
+```
+
+<Callout title='Rule of thumb'>
+  If a setting needs a paragraph to explain, it probably wants to be a sensible
+  default instead.
+</Callout>
+
+## Restraint is the feature
+
+The most valuable work on the project has been removing things: merging overlapping tools, deleting options nobody changed, cutting the install down to the smallest path that works. Scope is not managed at the start of a project. It is managed every week, by saying no to the next small, obviously useful thing.

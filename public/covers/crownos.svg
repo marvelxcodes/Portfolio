@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img">
+  <rect width="1200" height="800" fill="#f4efe5"/>
+  <g>
+    <circle cx="600" cy="368" r="300" fill="none" stroke="#2e54fe" stroke-opacity="0.14" stroke-width="1"/>
+    <circle cx="600" cy="368" r="238" fill="none" stroke="#2e54fe" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="3 9"/>
+    <circle cx="600" cy="368" r="176" fill="none" stroke="#2e54fe" stroke-opacity="0.3" stroke-width="1.5"/>
+    <circle cx="600" cy="368" r="114" fill="none" stroke="#2e54fe" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="6 10"/>
+    <circle cx="600" cy="368" r="54" fill="#ffbc95"/>
+    <circle cx="600" cy="368" r="14" fill="#0e100f"/>
+    <path d="M600 44V254M600 482V692M256 368h210M734 368h210" stroke="#96908c" stroke-opacity="0.45" stroke-width="1"/>
+  </g>
+  <text x="112" y="656" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="20" letter-spacing="4" fill="#96908c">KERNEL / COMPOSITOR / SHELL</text>
+</svg>

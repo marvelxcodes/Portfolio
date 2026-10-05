@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img">
+  <rect width="1200" height="800" fill="#f4efe5"/>
+  <g>
+    <rect x="150" y="120" width="900" height="80" rx="6" fill="#e8e8e3" stroke="#dbd5c8"/>
+    <rect x="176" y="144" width="32" height="32" rx="16" fill="#96908c" fill-opacity="0.35"/>
+    <rect x="230" y="150" width="420" height="8" rx="4" fill="#96908c" fill-opacity="0.4"/>
+    <rect x="230" y="166" width="250" height="6" rx="3" fill="#96908c" fill-opacity="0.22"/>
+    <rect x="700" y="156" width="300" height="6" rx="3" fill="#dbd5c8"/>
+    <rect x="700" y="156" width="300" height="6" rx="3" fill="#f99e76"/>
+    <rect x="150" y="224" width="900" height="80" rx="6" fill="#e8e8e3" stroke="#dbd5c8"/>
+    <rect x="176" y="248" width="32" height="32" rx="16" fill="#96908c" fill-opacity="0.35"/>
+    <rect x="230" y="254" width="380" height="8" rx="4" fill="#96908c" fill-opacity="0.4"/>
+    <rect x="230" y="270" width="224" height="6" rx="3" fill="#96908c" fill-opacity="0.22"/>
+    <rect x="700" y="260" width="300" height="6" rx="3" fill="#dbd5c8"/>
+    <rect x="700" y="260" width="248" height="6" rx="3" fill="#f99e76"/>
+    <rect x="150" y="328" width="900" height="80" rx="6" fill="#e8e8e3" stroke="#dbd5c8"/>
+    <rect x="176" y="352" width="32" height="32" rx="16" fill="#2e54fe" fill-opacity="1"/>
+    <rect x="230" y="358" width="340" height="8" rx="4" fill="#96908c" fill-opacity="0.4"/>
+    <rect x="230" y="374" width="198" height="6" rx="3" fill="#96908c" fill-opacity="0.22"/>
+    <rect x="700" y="364" width="300" height="6" rx="3" fill="#dbd5c8"/>
+    <rect x="700" y="364" width="196" height="6" rx="3" fill="#2e54fe"/>
+    <rect x="150" y="432" width="900" height="80" rx="6" fill="#e8e8e3" stroke="#dbd5c8"/>
+    <rect x="176" y="456" width="32" height="32" rx="16" fill="#96908c" fill-opacity="0.35"/>
+    <rect x="230" y="462" width="300" height="8" rx="4" fill="#96908c" fill-opacity="0.4"/>
+    <rect x="230" y="478" width="172" height="6" rx="3" fill="#96908c" fill-opacity="0.22"/>
+    <rect x="700" y="468" width="300" height="6" rx="3" fill="#dbd5c8"/>
+    <rect x="700" y="468" width="144" height="6" rx="3" fill="#f99e76"/>
+    <rect x="150" y="536" width="900" height="80" rx="6" fill="#e8e8e3" stroke="#dbd5c8"/>
+    <rect x="176" y="560" width="32" height="32" rx="16" fill="#96908c" fill-opacity="0.35"/>
+    <rect x="230" y="566" width="260" height="8" rx="4" fill="#96908c" fill-opacity="0.4"/>
+    <rect x="230" y="582" width="146" height="6" rx="3" fill="#96908c" fill-opacity="0.22"/>
+    <rect x="700" y="572" width="300" height="6" rx="3" fill="#dbd5c8"/>
+    <rect x="700" y="572" width="92" height="6" rx="3" fill="#f99e76"/>
+  </g>
+  <text x="112" y="656" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="20" letter-spacing="4" fill="#96908c">PARSE / SCORE / RANK</text>
+</svg>

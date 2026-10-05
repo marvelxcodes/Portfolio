@@ -1,0 +1,60 @@
+export const metadata = {
+  title: 'Scroll is a timeline, not a scrollbar',
+  description:
+    'Treating scroll position as playhead changes how you structure a page. Notes from building pinned, layered scenes with GSAP.',
+  date: '2026-04-02',
+  tag: 'Motion'
+};
+
+Most scroll animation is built backwards. Something enters the viewport, an animation fires, and the page moves on. That is a trigger, not a timeline — and the difference shows up the first time someone scrolls back up.
+
+## Playhead, not trigger
+
+The shift is to treat scroll position as a playhead. A section owns a timeline; the user's scroll scrubs it forwards and backwards. Nothing "fires". Everything is a function of progress.
+
+```ts title="scene.ts"
+const timeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: section,
+    start: 'top top',
+    end: '+=150%',
+    scrub: true,
+    pin: true
+  }
+});
+
+timeline
+  .from(headline, { yPercent: 110 })
+  .to(plate, { scale: 0.92 }, '<')
+  .from(caption, { opacity: 0 }, '-=0.2');
+```
+
+Once the scene is a timeline, reversibility is free, and the question you ask while designing changes from "what happens when" to "what does 40% look like".
+
+## Structure the page around scenes
+
+A scene is a pinned region with a fixed duration measured in scroll distance. Thinking this way has practical consequences:
+
+1. **Duration is layout.** `end: '+=150%'` adds a screen and a half of scroll. Budget it like you would budget height.
+2. **Pin sparingly.** Every pinned scene is a moment where the page stops responding to the user the way they expect. Earn it.
+3. **One easing for scrubbed motion.** `ease: 'none'` on scrubbed tweens; let the smooth-scroll layer provide the feel.
+
+<Callout title='Smooth scroll and ScrollTrigger'>
+  If a smooth-scroll library eases the scroll position, ScrollTrigger must read
+  that eased value — otherwise pinned scenes drift a few pixels out of sync.
+  Drive both from the same ticker.
+</Callout>
+
+## Let CSS take the cheap half
+
+Not everything needs JavaScript any more. A reading-progress bar is a scroll-driven animation in three declarations — it runs on the compositor and costs nothing on the main thread:
+
+```css
+.progress {
+  transform-origin: left;
+  animation: grow linear both;
+  animation-timeline: scroll(root);
+}
+```
+
+Save the timeline library for the scenes that genuinely need orchestration, and let the platform handle the rest.

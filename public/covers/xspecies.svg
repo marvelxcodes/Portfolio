@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img">
+  <rect width="1200" height="800" fill="#f4efe5"/>
+  <g>
+    <rect x="150" y="440" width="76" height="120" rx="4" fill="#f99e76" fill-opacity="0.75"/>
+    <text x="188" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">01</text>
+    <rect x="266" y="374" width="76" height="186" rx="4" fill="#f99e76" fill-opacity="0.75"/>
+    <text x="304" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">02</text>
+    <rect x="382" y="308" width="76" height="252" rx="4" fill="#f99e76" fill-opacity="0.75"/>
+    <text x="420" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">03</text>
+    <rect x="498" y="230" width="76" height="330" rx="4" fill="#2e54fe" fill-opacity="1"/>
+    <text x="536" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">04</text>
+    <rect x="614" y="302" width="76" height="258" rx="4" fill="#f99e76" fill-opacity="0.75"/>
+    <text x="652" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">05</text>
+    <rect x="730" y="364" width="76" height="196" rx="4" fill="#f99e76" fill-opacity="0.75"/>
+    <text x="768" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">06</text>
+    <rect x="846" y="412" width="76" height="148" rx="4" fill="#f99e76" fill-opacity="0.75"/>
+    <text x="884" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">07</text>
+    <rect x="962" y="464" width="76" height="96" rx="4" fill="#f99e76" fill-opacity="0.75"/>
+    <text x="1000" y="596" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="17" fill="#96908c" text-anchor="middle">08</text>
+    <path d="M56 560h1088" stroke="#dbd5c8" stroke-width="2"/>
+    <path d="M56 372h1088" stroke="#dbd5c8" stroke-width="1" stroke-dasharray="3 9"/>
+  </g>
+  <text x="112" y="656" font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size="20" letter-spacing="4" fill="#96908c">REALTIME / SCORING / WEBSOCKETS</text>
+</svg>

@@ -1,0 +1,1017 @@
+/* lottie-react injects `@layer lottie-react { :where(.lottie-display){...} }` at
+   runtime. An undeclared layer name sorts last and would outrank Tailwind's
+   utilities, so the name is registered here first — CSS allows a bare @layer
+   statement ahead of @import — which puts it under everything below. */
+@layer lottie-react;
+
+@import 'tailwindcss';
+
+/* ==========================================================================
+   DESIGN SYSTEM v2 — warm-light, blended from three references
+   · juanmora.co   → the whole register: warm cream ground, peach field,
+                     electric cobalt, 600-weight tight display type, and the
+                     parallax model (clipped frame + slow-drift media +
+                     sticky-half scenes + pinned panel)
+   · gsap.com      → per-letter clip/flip morph scaffolding, SVG flair behind
+                     glyphs, { } braces, and the near-black inverted register
+   · bymonolog.com → Success Stories: 12-col split rows, dotted separators,
+                     ● eyebrows, oversized metric readouts
+   ========================================================================== */
+
+@theme {
+	/* ---- cream: the ground (juanmora --bg-warm #faf6ef) ------------------ */
+	--color-cream-50: #fffdf9;
+	--color-cream-100: #faf6ef;
+	--color-cream-200: #f4efe5;
+	--color-cream-300: #e8e8e3;
+	--color-cream-400: #dbd5c8;
+	--color-cream-500: #c7c0b1;
+
+	/* ---- peach: the primary accent (juanmora orange1 / orange2) ---------- */
+	--color-peach-100: #ffe8da;
+	--color-peach-200: #ffd4b8;
+	--color-peach-300: #ffbc95;
+	--color-peach-400: #f99e76;
+	--color-peach-500: #ef7f51;
+	--color-peach-600: #d9663a;
+
+	/* ---- cobalt: the electric secondary (juanmora --blue) ---------------- */
+	--color-cobalt-300: #7f92ff;
+	--color-cobalt-500: #2e54fe;
+	--color-cobalt-600: #1c39cf;
+
+	/* ---- stone: text greys (juanmora --grey #96908c) --------------------- */
+	--color-stone-200: #c4bfba;
+	--color-stone-300: #aca6a1;
+	--color-stone-400: #96908c;
+	--color-stone-500: #74706c;
+	--color-stone-700: #4a4744;
+	--color-stone-900: #333333;
+
+	/* ---- ink: the inverted register (gsap.com body #0e100f) -------------- */
+	--color-ink-900: #0a0c0b;
+	--color-ink-800: #0e100f;
+	--color-ink-700: #161917;
+	--color-ink-600: #1f2320;
+	--color-ink-500: #2c312d;
+	--color-ink-400: #414743;
+	--color-ink-300: #5d635e;
+	--color-ink-200: #7d837e;
+	--color-ink-100: #a2a8a3;
+
+	/* ---- type ----------------------------------------------------------- */
+	--font-display: var(--font-coolvetica), 'Arial Black', sans-serif;
+	--font-sans: var(--font-satoshi), 'Helvetica Neue', Arial, sans-serif;
+	--font-mono: var(--font-jetbrains), ui-monospace, 'SF Mono', Menlo, monospace;
+	--font-script: var(--font-crima), Georgia, serif;
+
+	/* fluid scale, 20rem → 100rem viewport */
+	--text-micro: clamp(0.6rem, 0.586rem + 0.071vw, 0.65rem);
+	--text-xs: clamp(0.65rem, 0.621rem + 0.143vw, 0.75rem);
+	--text-sm: clamp(0.875rem, 0.839rem + 0.179vw, 1rem);
+	--text-base: clamp(1rem, 0.964rem + 0.179vw, 1.125rem);
+	--text-lg: clamp(1.125rem, 1.071rem + 0.268vw, 1.3125rem);
+	--text-xl: clamp(1.25rem, 1.179rem + 0.357vw, 1.5rem);
+	--text-h6: clamp(1.25rem, 1.161rem + 0.446vw, 1.5625rem);
+	--text-h5: clamp(1.5rem, 1.286rem + 1.071vw, 2.25rem);
+	--text-h4: clamp(1.875rem, 1.446rem + 2.143vw, 3.375rem);
+	--text-h3: clamp(2.25rem, 1.607rem + 3.214vw, 4.5rem);
+	--text-h2: clamp(2.75rem, 1.679rem + 5.357vw, 6.5rem);
+	--text-h1: clamp(3.25rem, 1.607rem + 8.214vw, 9rem);
+	--text-display: clamp(4rem, 1.75rem + 11.25vw, 11.875rem);
+	--text-mega: clamp(4.5rem, 0.929rem + 17.857vw, 17rem);
+
+	/* juanmora runs -0.0375em on display, gsap.com -0.02em. Split it. */
+	--tracking-tightest: -0.035em;
+	--tracking-tighter: -0.025em;
+	--tracking-tight: -0.012em;
+	--tracking-wide: 0.08em;
+	--tracking-wider: 0.16em;
+
+	--leading-crush: 0.82;
+	--leading-flat: 0.9;
+	--leading-tight: 1.04;
+	--leading-snug: 1.18;
+	--leading-normal: 1.35;
+	--leading-relaxed: 1.55;
+
+	/* ---- geometry -------------------------------------------------------- */
+	--radius-xs: 0.15rem;
+	--radius-sm: 0.375rem;
+	--radius-md: 0.75rem;
+	--radius-lg: 1.25rem;
+	--radius-xl: 2rem;
+	--radius-full: 100vw;
+
+	/* ---- motion ---------------------------------------------------------- */
+	--ease-primary: cubic-bezier(0.83, 0, 0.17, 1);
+	--ease-secondary: cubic-bezier(0.31, 0.75, 0.22, 1);
+	--ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-expo-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+	--ease-swift: cubic-bezier(0.51, 0, 0.08, 1);
+
+	--animate-marquee: marquee 42s linear infinite;
+	--animate-marquee-reverse: marquee-reverse 42s linear infinite;
+	--animate-blink: blink 1.6s steps(1) infinite;
+	--animate-spin-slow: spin 14s linear infinite;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+@layer base {
+	:root {
+		--site-columns: 12;
+		--site-gutter: 1rem;
+		--site-margin: clamp(1rem, 0.75rem + 1.25vw, 2.25rem);
+		--site-max: 100rem;
+		--site-column: calc(
+			(min(var(--site-max), 100% - var(--site-margin) * 2) -
+						(var(--site-gutter) * (var(--site-columns) - 1))) / var(--site-columns)
+		);
+
+		--section-sm: clamp(3rem, 2.5rem + 2.5vw, 5rem);
+		--section-md: clamp(4rem, 3.25rem + 3.75vw, 7rem);
+		--section-lg: clamp(5.5rem, 4.375rem + 5.625vw, 10rem);
+
+		--nav-h: 4.25rem;
+		--dur-fast: 0.375s;
+		--dur: 0.525s;
+		--dur-slow: 0.9s;
+
+		color-scheme: light;
+	}
+
+	* {
+		border-color: --alpha(var(--color-stone-400) / 32%);
+		min-width: 0;
+	}
+
+	html {
+		overflow-x: clip;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		scroll-behavior: auto; /* Lenis owns scrolling */
+		background-color: var(--color-cream-100);
+	}
+
+	body {
+		background-color: var(--color-cream-100);
+		color: var(--color-stone-900);
+		font-family: var(--font-sans);
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+		letter-spacing: var(--tracking-tight);
+		overflow-x: clip;
+	}
+
+	::selection {
+		background-color: var(--color-cobalt-500);
+		color: var(--color-cream-50);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-cobalt-500);
+		outline-offset: 3px;
+		border-radius: var(--radius-xs);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		text-wrap: balance;
+		letter-spacing: var(--tracking-tighter);
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	img,
+	svg,
+	video,
+	canvas {
+		display: block;
+		max-width: 100%;
+	}
+
+	button,
+	a {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	/* Lenis */
+	html.lenis,
+	html.lenis body {
+		height: auto;
+	}
+	.lenis.lenis-smooth {
+		scroll-behavior: auto !important;
+	}
+	.lenis.lenis-stopped {
+		overflow: hidden;
+	}
+}
+
+/* ==========================================================================
+   CSS EXTENSIONS
+
+   Everything below lives in `@layer components` on purpose. Tailwind v4 orders
+   its layers theme → base → components → utilities, so an *unlayered* rule
+   sorts last and quietly outranks every utility: `.link-underline { color:
+   inherit }` written outside a layer beats `text-cream-50/80` on the same
+   element, and the utility silently does nothing. Inside `components`, the
+   utilities win — which is the whole point of having them.
+   ========================================================================== */
+
+@layer components {
+
+	/* ---- layout -------------------------------------------------------------- */
+
+	.shell {
+		width: 100%;
+		max-width: var(--site-max);
+		margin-inline: auto;
+		padding-inline: var(--site-margin);
+	}
+
+	.grid-12 {
+		display: grid;
+		grid-template-columns: repeat(var(--site-columns), minmax(0, 1fr));
+		gap: var(--site-gutter);
+	}
+
+	.bleed {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+	}
+
+	/* juanmora wraps every register change in its own rounded plate */
+	.plate {
+		position: relative;
+		border-radius: var(--radius-lg);
+		overflow: clip;
+		isolation: isolate;
+	}
+
+	/* The inverted (near-black) register, lifted from gsap.com's ground.
+	   Named `on-ink`, not `invert`: Tailwind ships `invert` as the CSS
+	   `filter: invert(100%)` utility, and a same-named component class loses to
+	   it — the section came out photo-negative, ink reading as white and peach
+	   as teal. */
+	.on-ink {
+		background-color: var(--color-ink-800);
+		color: var(--color-cream-200);
+	}
+
+	.on-ink ::selection {
+		background-color: var(--color-peach-300);
+		color: var(--color-ink-900);
+	}
+
+	/* ---- type utilities ------------------------------------------------------ */
+
+	/* Monolog's eyebrow: a filled dot, then the label. Two words so each can
+	   stagger in independently. */
+	.eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.7em;
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		letter-spacing: var(--tracking-wider);
+		text-transform: uppercase;
+		color: currentColor;
+	}
+
+	.eyebrow::before {
+		content: '';
+		flex: 0 0 auto;
+		width: 0.7em;
+		height: 0.7em;
+		border-radius: var(--radius-full);
+		background-color: var(--color-peach-400);
+	}
+
+	.eyebrow-word {
+		display: inline-block;
+	}
+
+	/* juanmora / gsap.com share the same display recipe: heavy, 0.9 leading,
+	   negative tracking, uppercase. */
+	.display {
+		font-family: var(--font-display);
+		font-weight: 400;
+		line-height: var(--leading-flat);
+		letter-spacing: var(--tracking-tightest);
+		text-transform: uppercase;
+	}
+
+	.display-crush {
+		font-family: var(--font-display);
+		font-weight: 400;
+		line-height: var(--leading-crush);
+		letter-spacing: var(--tracking-tightest);
+		text-transform: uppercase;
+	}
+
+	.trim {
+		display: block;
+	}
+	.trim::before,
+	.trim::after {
+		content: '';
+		display: table;
+	}
+	.trim::before {
+		margin-bottom: -0.36em;
+	}
+	.trim::after {
+		margin-top: -0.34em;
+	}
+
+	/* ---- text animation primitives (GSAP SplitText targets) ------------------ */
+
+	.split-mask {
+		display: block;
+		overflow: hidden;
+		padding-block: 0.08em;
+		margin-block: -0.08em;
+	}
+
+	/* SplitText sets its own display on lines; forcing inline-block there collapses
+	   multi-line copy, so only words and chars ride inline. */
+	.split-line {
+		will-change: transform;
+	}
+
+	.split-word {
+		display: inline-block;
+		will-change: transform;
+	}
+
+	.char-fill .char {
+		display: inline-block;
+		opacity: 0.14;
+		will-change: opacity, color;
+	}
+
+	/* ==========================================================================
+	   MORPH HEADLINE — gsap.com's hero, reconstructed
+	   Two stacked flex rows of per-letter cells. Each cell clips its glyph so it
+	   can roll out of its own box; cells that carry a second face get a 3D flip
+	   with the incoming glyph pinned to the bottom edge. SVG flair sits behind at
+	   z-index -1 and is revealed as the letters clear.
+	   ========================================================================== */
+
+	.morph {
+		position: relative;
+		pointer-events: none;
+		font-family: var(--font-display);
+		font-weight: 400;
+		line-height: var(--leading-flat);
+		letter-spacing: var(--tracking-tighter);
+		text-transform: uppercase;
+	}
+
+	.morph-row {
+		display: flex;
+		width: 100%;
+	}
+
+	.morph-row + .morph-row {
+		justify-content: flex-end;
+	}
+
+	.morph-cell {
+		position: relative;
+		display: block;
+	}
+
+	/* The clip box — the glyph rolls up out of this.
+	   · Perspective lives here, not on the cell: `overflow: hidden` forces
+	     `transform-style: flat`, so the two faces only read as a physical flip
+	     if their *direct* parent supplies it.
+	   · It is a one-cell grid, not a block with an absolutely-positioned second
+	     face. Both glyphs occupy the same grid area, so the cell measures the
+	     *wider* of the pair — otherwise a narrow front glyph (an "I") sizes the
+	     box and its partner (a "K") is clipped in half the moment it lands. */
+	.morph-clip {
+		position: relative;
+		display: grid;
+		grid-template-areas: 'glyph';
+		overflow: hidden;
+		perspective: 750px;
+		transform-origin: 50% 100%;
+	}
+
+	/* `width: max-content` keeps each face at its own natural width instead of
+	   stretching to the column; the clip's width is then driven from JS and
+	   tweened between the two during the flip, so the row re-flows with the
+	   letters rather than permanently reserving the wider glyph's box. */
+	.morph-face,
+	.morph-face-in {
+		grid-area: glyph;
+		display: block;
+		align-self: end;
+		justify-self: start;
+		width: max-content;
+		backface-visibility: hidden;
+		will-change: transform;
+	}
+
+	/* gsap.com slides a counter horizontally through one widened letter cell. The
+	   track is absolute so its 460% width never feeds back into the flex row. */
+	.morph-counter {
+		position: absolute;
+		inset-inline-start: 0;
+		bottom: 0;
+		width: 460%;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	.morph-counter > span {
+		display: block;
+		white-space: nowrap;
+		will-change: transform;
+	}
+
+	/* Sizing is in `em`, so a flair mark scales with the headline it sits behind.
+	   gsap.com zeroes the font-size here and sizes in rem instead; that would make
+	   every em length collapse to nothing. */
+	.flair {
+		position: absolute;
+		z-index: -1;
+		line-height: 0;
+		pointer-events: none;
+		will-change: transform;
+	}
+
+	.flair svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	/* gsap.com brackets its subtitle in animated braces */
+	.braced {
+		position: relative;
+		display: inline-block;
+		padding-inline: 1.35em;
+	}
+
+	.brace {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		aspect-ratio: 27 / 78;
+		will-change: transform;
+	}
+
+	.brace:first-of-type {
+		inset-inline-start: 0;
+	}
+
+	.brace:last-of-type {
+		inset-inline-end: 0;
+		transform: rotate(180deg);
+	}
+
+	.brace svg {
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
+
+	.brace path {
+		fill: currentColor;
+	}
+
+	/* ==========================================================================
+	   PARALLAX SCAFFOLDING — juanmora.co
+	   A clipped frame whose media drifts at ~30% of scroll while dimming to 0.6,
+	   with gradient scrims top and bottom. Sticky halves and pinned panels use the
+	   same vocabulary.
+	   ========================================================================== */
+
+	.frame {
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.frame-media {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		will-change: transform, opacity;
+	}
+
+	.frame-media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* juanmora runs two scrims: a short one at the top for the nav, a tall one at
+	   the bottom so the headline always sits on darkness */
+	.scrim-top {
+		position: absolute;
+		inset-inline: 0;
+		top: 0;
+		height: 38%;
+		z-index: 1;
+		pointer-events: none;
+		background: linear-gradient(
+			to bottom,
+			--alpha(var(--color-ink-900) / 62%),
+			transparent
+		);
+	}
+
+	.scrim-bottom {
+		position: absolute;
+		inset-inline: 0;
+		bottom: 0;
+		height: 72%;
+		z-index: 1;
+		pointer-events: none;
+		background: linear-gradient(
+			to top,
+			--alpha(var(--color-ink-900) / 78%) 6%,
+			--alpha(var(--color-ink-900) / 40%) 46%,
+			transparent
+		);
+	}
+
+	.scene {
+		position: relative;
+	}
+
+	.scene-sticky {
+		position: sticky;
+		top: 0;
+		height: 100svh;
+		overflow: hidden;
+	}
+
+	/* juanmora's half-width pin: the statement holds while the column scrolls */
+	.sticky-half {
+		position: sticky;
+		top: 0;
+		height: fit-content;
+		min-height: 100svh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.depth {
+		will-change: transform;
+	}
+
+	/* ==========================================================================
+	   SUCCESS STORIES — bymonolog.com
+	   12-col rows: a 3:2 cover spanning 7, content spanning 5, dotted separators,
+	   and an oversized metric readout. The cover image sits at scale(1.15) so it
+	   has room to drift.
+	   ========================================================================== */
+
+	.story-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.story-item {
+		position: relative;
+		padding-bottom: var(--section-sm);
+		border-bottom: 1px dotted var(--color-cream-500);
+	}
+
+	.story-item:last-child {
+		border-bottom: 0;
+	}
+
+	.story-link {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: var(--site-gutter);
+		place-items: start;
+		width: 100%;
+	}
+
+	.story-cover {
+		position: relative;
+		grid-column: span 7 / span 7;
+		width: 100%;
+		aspect-ratio: 3 / 2;
+		border-radius: var(--radius-sm);
+		overflow: clip;
+		background-color: var(--color-cream-300);
+	}
+
+	.story-cover img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: scale(1.15);
+		will-change: transform;
+	}
+
+	.story-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		display: grid;
+		place-items: center;
+		opacity: 0;
+		background-color: --alpha(var(--color-ink-900) / 80%);
+		transition: opacity var(--dur-fast) var(--ease-swift);
+	}
+
+	.story-link:hover .story-overlay,
+	.story-link:focus-visible .story-overlay {
+		opacity: 1;
+	}
+
+	.story-content {
+		grid-column: span 5 / span 5;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: var(--section-sm);
+		max-width: 39ch;
+		height: 100%;
+	}
+
+	@media (max-width: 60rem) {
+		.story-cover,
+		.story-content {
+			grid-column: span 12 / span 12;
+		}
+		.story-content {
+			max-width: none;
+			gap: 2rem;
+		}
+	}
+
+	/* the "07 / View All Stories / (→)" closer */
+	.story-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--site-gutter);
+		width: 100%;
+		padding-block: var(--section-sm);
+		border-top: 1px solid var(--color-cream-500);
+	}
+
+	/* ---- surfaces ------------------------------------------------------------ */
+
+	.card {
+		position: relative;
+		background-color: var(--color-cream-200);
+		border: 1px solid --alpha(var(--color-stone-400) / 28%);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.on-ink .card {
+		background-color: var(--color-ink-700);
+		border-color: --alpha(var(--color-cream-200) / 12%);
+	}
+
+	.hairline {
+		height: 1px;
+		width: 100%;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			--alpha(var(--color-stone-400) / 55%) 12%,
+			--alpha(var(--color-stone-400) / 55%) 88%,
+			transparent
+		);
+	}
+
+	.dotted-rule {
+		height: 2px;
+		width: 100%;
+		background-image: linear-gradient(
+			90deg,
+			currentColor 2px,
+			transparent 2px
+		);
+		background-size: 10px 2px;
+		background-repeat: repeat-x;
+		opacity: 0.35;
+	}
+
+	/* ---- atmosphere ---------------------------------------------------------- */
+
+	.grain {
+		position: fixed;
+		inset: -50%;
+		z-index: 60;
+		pointer-events: none;
+		opacity: 0.035;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+		animation: grain-shift 0.7s steps(2) infinite;
+	}
+
+	/* juanmora keeps a fixed warm glow pinned to the top of the viewport */
+	.top-glow {
+		position: fixed;
+		inset-inline: 0;
+		top: 0;
+		height: 60svh;
+		z-index: 1;
+		pointer-events: none;
+		background: radial-gradient(
+			80% 100% at 50% 0%,
+			--alpha(var(--color-peach-300) / 34%),
+			transparent 70%
+		);
+	}
+
+	.rails {
+		position: fixed;
+		inset: 0;
+		z-index: 1;
+		pointer-events: none;
+		max-width: var(--site-max);
+		margin-inline: auto;
+		padding-inline: var(--site-margin);
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.rails span {
+		border-right: 1px solid --alpha(var(--color-stone-400) / 7%);
+	}
+	.rails span:first-child {
+		border-left: 1px solid --alpha(var(--color-stone-400) / 7%);
+	}
+
+	/* raster/SVG icons ship in mixed colours; normalise them to the palette */
+	.icon-ink {
+		filter: brightness(0) saturate(100%);
+		opacity: 0.72;
+		transition: opacity var(--dur-fast) var(--ease-swift), filter var(--dur-fast) var(--ease-swift);
+	}
+
+	.icon-ink:hover {
+		opacity: 1;
+		filter: none;
+	}
+
+	.icon-cream {
+		filter: brightness(0) invert(1);
+		opacity: 0.85;
+		transition: opacity var(--dur-fast) var(--ease-swift), filter var(--dur-fast) var(--ease-swift);
+	}
+
+	.icon-cream:hover {
+		opacity: 1;
+		filter: none;
+	}
+
+	/* ---- interactive --------------------------------------------------------- */
+
+	.link-underline {
+		position: relative;
+		display: inline-block;
+		color: inherit;
+	}
+
+	.link-underline::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -0.12em;
+		height: 1px;
+		width: 100%;
+		background: currentColor;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform var(--dur-fast) var(--ease-expo-out);
+	}
+
+	.link-underline:hover::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.65em;
+		padding: 1em 1.7em;
+		border-radius: var(--radius-full);
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		border: 1px solid --alpha(var(--color-stone-900) / 22%);
+		color: var(--color-stone-900);
+		overflow: hidden;
+		isolation: isolate;
+		transition: color var(--dur-fast) var(--ease-swift),
+			border-color var(--dur-fast) var(--ease-swift);
+	}
+
+	.btn::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: var(--color-stone-900);
+		transform: translateY(101%);
+		transition: transform var(--dur) var(--ease-primary);
+	}
+
+	.btn:hover {
+		color: var(--color-cream-100);
+		border-color: var(--color-stone-900);
+	}
+
+	.btn:hover::before {
+		transform: translateY(0);
+	}
+
+	/* the loud one — juanmora's peach on cream */
+	.btn-peach {
+		border-color: transparent;
+		background-color: var(--color-peach-300);
+		color: var(--color-stone-900);
+	}
+	.btn-peach::before {
+		background: var(--color-stone-900);
+	}
+	.btn-peach:hover {
+		color: var(--color-peach-300);
+		border-color: transparent;
+	}
+
+	/* the electric one */
+	.btn-cobalt {
+		border-color: transparent;
+		background-color: var(--color-cobalt-500);
+		color: var(--color-cream-50);
+	}
+	.btn-cobalt::before {
+		background: var(--color-cream-50);
+	}
+	.btn-cobalt:hover {
+		color: var(--color-cobalt-500);
+		border-color: transparent;
+	}
+
+	/* over hero media, where the ground is an image rather than a surface */
+	.btn-onmedia {
+		border-color: --alpha(var(--color-cream-50) / 34%);
+		color: var(--color-cream-50);
+	}
+	.btn-onmedia::before {
+		background: var(--color-cream-50);
+	}
+	.btn-onmedia:hover {
+		color: var(--color-ink-900);
+		border-color: var(--color-cream-50);
+	}
+
+	/* on the dark register the default button inverts */
+	.on-ink .btn {
+		border-color: --alpha(var(--color-cream-200) / 26%);
+		color: var(--color-cream-200);
+	}
+	.on-ink .btn::before {
+		background: var(--color-cream-100);
+	}
+	.on-ink .btn:hover {
+		color: var(--color-ink-900);
+		border-color: var(--color-cream-100);
+	}
+
+	.magnetic {
+		display: inline-block;
+		will-change: transform;
+	}
+
+	/* ---- marquee ------------------------------------------------------------- */
+
+	.marquee {
+		display: flex;
+		width: max-content;
+		will-change: transform;
+	}
+
+	.marquee-track > * {
+		flex: 0 0 auto;
+	}
+
+	@keyframes marquee {
+		from {
+			transform: translate3d(0, 0, 0);
+		}
+		to {
+			transform: translate3d(-50%, 0, 0);
+		}
+	}
+
+	@keyframes marquee-reverse {
+		from {
+			transform: translate3d(-50%, 0, 0);
+		}
+		to {
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	@keyframes grain-shift {
+		0% {
+			transform: translate(0, 0);
+		}
+		25% {
+			transform: translate(-3%, 2%);
+		}
+		50% {
+			transform: translate(2%, -3%);
+		}
+		75% {
+			transform: translate(-2%, -2%);
+		}
+		100% {
+			transform: translate(3%, 1%);
+		}
+	}
+
+	@keyframes blink {
+		0%,
+		50% {
+			opacity: 1;
+		}
+		51%,
+		100% {
+			opacity: 0;
+		}
+	}
+
+	/* ---- entrance defaults ---------------------------------------------------
+	   Targets start hidden and GSAP takes them from there. The reveal is undone by
+	   the <noscript> block in the document head, so a visitor without JavaScript
+	   gets the full page rather than a blank one. */
+
+	[data-anim='rise'] {
+		opacity: 0;
+		transform: translateY(34px);
+	}
+
+	[data-anim='fade'] {
+		opacity: 0;
+	}
+
+	/* ---- reduced motion ------------------------------------------------------ */
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.001ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.001ms !important;
+		}
+
+		.grain {
+			animation: none;
+		}
+
+		[data-anim] {
+			opacity: 1 !important;
+			transform: none !important;
+		}
+
+		.char-fill .char {
+			opacity: 1;
+		}
+
+		.scene-sticky,
+		.sticky-half {
+			position: relative;
+			height: auto;
+			min-height: 0;
+		}
+
+		.morph-face-in,
+		.flair {
+			display: none;
+		}
+	}
+}

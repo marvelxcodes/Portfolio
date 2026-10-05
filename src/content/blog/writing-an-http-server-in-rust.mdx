@@ -1,0 +1,64 @@
+export const metadata = {
+  title: 'Writing an HTTP server in Rust, without the framework',
+  description:
+    'Parsing request lines by hand teaches you more about the web than a year of using a framework that hides them.',
+  date: '2026-06-14',
+  tag: 'Systems'
+};
+
+Frameworks are compression. They take a few thousand decisions about sockets, buffers and parsing and fold them into one line: `app.get('/', handler)`. That is exactly what you want in production and exactly what you do not want when you are trying to understand what a request actually is.
+
+So I wrote one from the socket up — no `hyper`, no `tokio`, just `std::net` — to stop treating the request lifecycle as a black box.
+
+## A request is just bytes
+
+Everything starts with a TCP listener and a loop. The first surprise is how little ceremony there is:
+
+```rust title="src/main.rs"
+use std::io::{BufRead, BufReader, Write};
+use std::net::{TcpListener, TcpStream};
+
+fn main() -> std::io::Result<()> {
+    let listener = TcpListener::bind("127.0.0.1:7878")?;
+    for stream in listener.incoming() {
+        handle(stream?)?;
+    }
+    Ok(())
+}
+
+fn handle(mut stream: TcpStream) -> std::io::Result<()> {
+    let mut reader = BufReader::new(&stream);
+    let mut request_line = String::new();
+    reader.read_line(&mut request_line)?;
+    stream.write_all(b"HTTP/1.1 200 OK\r\ncontent-length: 2\r\n\r\nok")
+}
+```
+
+That is a working server. It is also wrong in at least five ways, and each one is a lesson.
+
+## The parser is the product
+
+The request line is `METHOD SP TARGET SP VERSION CRLF`, followed by headers until an empty line. Writing that parser by hand forces every edge case into the open:
+
+- Header names are case-insensitive, values are not.
+- A line ending can be `\r\n` — and real clients occasionally send a bare `\n`.
+- `content-length` and `transfer-encoding: chunked` are mutually exclusive, and getting that wrong is a request-smuggling bug, not a style issue.
+
+<Callout title='Make invalid states unrepresentable'>
+  Parse into an enum, not a string. A `Method::Get` can never be misspelled three
+  layers deeper in the router; a `&str` can.
+</Callout>
+
+## Keep-alive changes everything
+
+HTTP/1.1 connections are persistent by default. The moment you honour that, "read until EOF" stops working — you have to know exactly where one request ends and the next begins. That is the real reason `content-length` exists, and it is why chunked encoding frames every piece of the body with its own size.
+
+| Concern | Naive server | HTTP/1.1-correct |
+| --- | --- | --- |
+| Body length | Read to EOF | `content-length` or chunked framing |
+| Connection | One request | Loop until `connection: close` |
+| Slow clients | Blocks forever | Read timeouts per socket |
+
+## What I took away
+
+The framework did not get worse after this. It got legible. Every option in its config now maps to something I have had to implement badly at least once — and that is the cheapest way I know to read documentation properly.

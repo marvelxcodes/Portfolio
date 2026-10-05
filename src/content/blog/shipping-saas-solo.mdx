@@ -1,0 +1,51 @@
+export const metadata = {
+  title: 'Shipping a SaaS alone, and what breaks first',
+  description:
+    'Billing is not the hard part. Support, migrations and the three-in-the-morning incident are the hard part.',
+  date: '2025-11-09',
+  tag: 'Product'
+};
+
+Building the product is the part everyone plans for. The surprises arrive after launch, and they are rarely the things a solo builder spends the first month worrying about.
+
+## Billing is solved; state is not
+
+Payment providers have made checkout, subscriptions and invoices close to a configuration problem. What they cannot do is keep your own database in agreement with theirs. The work is in the webhooks:
+
+```ts title="billing/webhook.ts"
+switch (event.type) {
+  case 'customer.subscription.updated':
+  case 'customer.subscription.deleted':
+    await syncSubscription(event.data.object);
+    break;
+  default:
+    return; // ignore everything you do not explicitly handle
+}
+```
+
+Make every handler idempotent. Providers retry, events arrive out of order, and "it ran twice" must never mean "they were charged twice" or "they lost access".
+
+## Migrations are the real deploys
+
+Shipping code is easy to roll back. Shipping a schema change is not. A few habits make migrations boring, which is the goal:
+
+1. **Expand, then contract.** Add the new column, backfill, switch reads, and only then drop the old one.
+2. **Never block on a backfill.** Run it as a job, not inside the migration.
+3. **Rehearse on a copy of production.** Data you did not expect is the default, not the exception.
+
+## Support is a feature you did not design
+
+Every unclear error message becomes an email. The fastest support improvement is usually not a help desk — it is rewriting the five most common failure states so they explain themselves.
+
+| Breaks first | Why | Cheapest fix |
+| --- | --- | --- |
+| Webhook sync | Retries and ordering | Idempotent handlers |
+| Migrations | Unexpected data | Expand / contract |
+| Support load | Silent failures | Better error states |
+
+<Callout title='The 3 a.m. rule'>
+  Anything that can wake you up should page with enough context to fix it from
+  a phone: what failed, for whom, and the one command that rolls it back.
+</Callout>
+
+Working alone does not mean doing less of this. It means doing it earlier, because there is nobody else to notice when it breaks.
