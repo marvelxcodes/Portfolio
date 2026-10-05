@@ -29,7 +29,10 @@ export const social = [
 	{ label: 'LinkedIn', href: 'https://linkedin.com/in/marvelxcodes' },
 	{ label: 'X', href: 'https://x.com/marvelxcodes' },
 	{ label: 'Instagram', href: 'https://instagram.com/marvelxcodes' },
-	{ label: 'Stack Overflow', href: 'https://stackoverflow.com/users/marvelxcodes' }
+	{
+		label: 'Stack Overflow',
+		href: 'https://stackoverflow.com/users/marvelxcodes'
+	}
 ] as const;
 
 export const clocks = [
@@ -63,8 +66,10 @@ export const stackIcons = [
 export const about = {
 	label: 'About me',
 	paragraphs: [
-		person.summary,
-		'Five years in, the work spans SaaS platforms for clients, an agent-native Linux distribution and tooling that clones websites on autopilot. The common thread is ownership — the schema, the API, the interface and the deploy are the same pair of hands, so nothing gets lost in a handoff.'
+		'Creator of CrownOS.',
+		'Software Engineer and Systems Builder in Bengaluru, working with Rust, Linux, Wayland, React, Next.js, TypeScript and AI.',
+		'In last five years, my work spans from SaaS platforms to 3D Modeling to Linux programs to AI workflows.',
+		'Over the past five years, I’ve worked across the stack and beyond — building SaaS platforms, 3D modeling, building low level software, and AI-powered workflows.'
 	]
 } as const;
 
@@ -72,7 +77,7 @@ export type Stat = { value: string; label: string };
 
 export const stats = {
 	repositories: { value: '72+', label: 'Public repositories shipped' },
-	years: { value: '05', label: 'Years writing production code' },
+	years: { value: '5+', label: 'Years writing production code' },
 	languages: { value: '12', label: 'Languages and runtimes in rotation' },
 	distro: { value: '01', label: 'Linux distribution, in production' }
 } as const satisfies Record<string, Stat>;
@@ -85,32 +90,52 @@ export type Discipline = {
 };
 
 export const expertise = {
-	heading: ['Schema,', 'Interface,', 'Deploy.'],
+	heading: ['What do I work on?'],
 	body: 'Full stack delivery from an empty repository to production traffic. I take products end to end — the data model, the API, the interface people touch and the pipeline that ships it.',
 	cta: 'Start a project',
 	disciplines: [
 		{
 			title: 'Product engineering',
 			body: 'Multi-tenant applications with billing, auth and the boring reliability work that keeps customers. Shipped end to end, owned after launch.',
-			focus: ['Schema & API design', 'Auth, billing, tenancy', 'Deploy pipelines', 'Production on-call'],
+			focus: [
+				'Schema & API design',
+				'Auth, billing, tenancy',
+				'Deploy pipelines',
+				'Production on-call'
+			],
 			icon: 'rings'
 		},
 		{
 			title: 'Interface & motion',
 			body: 'Where the product earns its trust — motion, type, and state that never stutters. Scroll choreography and shader work that directs attention.',
-			focus: ['React, Next.js, Svelte', 'GSAP & WebGL', 'Design systems', 'Landing pages'],
+			focus: [
+				'React, Next.js, Svelte',
+				'GSAP & WebGL',
+				'Design systems',
+				'Landing pages'
+			],
 			icon: 'globe'
 		},
 		{
 			title: 'Systems & low level',
 			body: 'Rust, Kotlin and a stubborn interest in what happens under the runtime. Services, CLIs and an operating system built from the compositor up.',
-			focus: ['Rust services & CLIs', 'Linux & Wayland', 'WebAssembly', 'Internal tooling'],
+			focus: [
+				'Rust services & CLIs',
+				'Linux & Wayland',
+				'WebAssembly',
+				'Internal tooling'
+			],
 			icon: 'burst'
 		},
 		{
 			title: 'AI products',
 			body: 'Agent-native tooling and pipelines that turn unstructured input into decisions — from ranking résumés to weighting a backlog by revenue.',
-			focus: ['Claude Code plugins', 'Embeddings & clustering', 'Transcript extraction', 'Local models'],
+			focus: [
+				'Claude Code plugins',
+				'Embeddings & clustering',
+				'Transcript extraction',
+				'Local models'
+			],
 			icon: 'orbit'
 		}
 	] satisfies Discipline[]
@@ -131,8 +156,12 @@ export type Project = {
 export const work = {
 	title: 'Work',
 	label: 'Selected work',
-	intro: 'Products I have taken from an empty repository to real users — an operating system, RL infrastructure for AI labs, a compliance platform and an SEO tool. Each one shipped, and each one is still being sharpened.',
-	cta: { label: 'All repositories', href: 'https://github.com/marvelxcodes?tab=repositories' },
+	intro:
+		'Products I have taken from an empty repository to real users — an operating system, RL infrastructure for AI labs, a compliance platform and an SEO tool. Each one shipped, and each one is still being sharpened.',
+	cta: {
+		label: 'All repositories',
+		href: 'https://github.com/marvelxcodes?tab=repositories'
+	},
 	projects: [
 		{
 			name: 'CrownOS',
@@ -184,12 +213,12 @@ export const work = {
 
 export const principles = {
 	label: 'Principles',
-	portrait: '/portrait-about.jpg',
+	portrait: '/portrait.jpg',
 	items: [
 		{
 			lead: 'One person, whole stack',
 			scope: 'Every engagement',
-			body: 'No handoff between a designer who cannot ship and an engineer who will not decide. The schema, the API, the interface and the deploy are the same pair of hands.'
+			body: 'No handoff between a designer who cannot ship and an engineer who will not decide. The schema, the API, the interface and the deployment are the same pair of hands.'
 		},
 		{
 			lead: 'Motion that means something',
@@ -232,7 +261,8 @@ export const blog = {
 	title: 'Blog',
 	label: 'Writing in public',
 	tagline: ['Notes from', 'the build.'],
-	description: 'Notes on systems, motion and shipping software alone — written by Rama Krishnan V.',
+	description:
+		'Notes on systems, motion and shipping software alone — written by Rama Krishnan V.',
 	body: 'Long-form writing about the parts of the work that are hard to explain in a commit message — systems, motion, and what it actually costs to ship something alone.'
 } as const;
 
@@ -250,8 +280,21 @@ export const footer = {
 export const contactPage = {
 	heading: ['Tell me', 'the shape', 'of it.'],
 	body: 'What it has to do, who it is for, and roughly when. That is enough for a first reply — usually within a day.',
-	scopes: ['Product engineering', 'SaaS platforms', 'Motion & WebGL', 'Landing pages', 'Design systems', 'Systems & tooling'],
-	budgets: ['Prefer not to say', 'Under $2k', '$2k – $6k', '$6k – $15k', '$15k+']
+	scopes: [
+		'Product engineering',
+		'SaaS platforms',
+		'Motion & WebGL',
+		'Landing pages',
+		'Design systems',
+		'Systems & tooling'
+	],
+	budgets: [
+		'Prefer not to say',
+		'Under $2k',
+		'$2k – $6k',
+		'$6k – $15k',
+		'$15k+'
+	]
 } as const;
 
 export const notFound = {
@@ -260,4 +303,3 @@ export const notFound = {
 	body: 'The link is broken or the page moved. Either way, the work is back this way.',
 	cta: 'Back to the story'
 } as const;
-
