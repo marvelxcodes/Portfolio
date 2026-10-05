@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
 		minimumCacheTTL: THIRTY_DAYS_SECONDS
 	},
 	experimental: {
-		optimizePackageImports: ['gsap']
+		optimizePackageImports: ['gsap', 'motion']
 	},
 	headers: async () => [{ source: '/:path*', headers: securityHeaders }]
 };
