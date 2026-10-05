@@ -120,71 +120,64 @@ export type Project = {
 	name: string;
 	category: string;
 	year: string;
-	blurb: string;
 	description: string;
 	stack: string[];
-	metric: Stat;
 	accent: string;
+	logo?: string;
 	onAccent: 'light' | 'dark';
-	href?: string;
+	cta?: { label: string; href: string };
 };
 
 export const work = {
 	title: 'Work',
-	label: 'Selected projects',
-	intro: 'Products I have taken from an empty repository to real users — an operating system, a cloning engine, a revenue-weighted backlog and a SaaS analytics platform. Each one shipped, and each one is still being sharpened.',
+	label: 'Selected work',
+	intro: 'Products I have taken from an empty repository to real users — an operating system, RL infrastructure for AI labs, a compliance platform and an SEO tool. Each one shipped, and each one is still being sharpened.',
 	cta: { label: 'All repositories', href: 'https://github.com/marvelxcodes?tab=repositories' },
 	projects: [
 		{
 			name: 'CrownOS',
-			category: 'Operating system',
+			category: 'Agent-native Linux desktop',
 			year: '2026',
-			blurb: 'An agent-native desktop OS built on the Linux kernel.',
 			description:
-				'An Arch-based distribution designed around AI agents — local models on CUDA, ROCm or NPU, a custom tiling and floating compositor, multi-device sync and a single TOML configuration system, with everything kept on-device.',
-			stack: ['Rust', 'Linux', 'Wayland', 'PipeWire'],
-			metric: { value: '60s', label: 'ISO to desktop' },
-			accent: '#f2b33d',
-			onAccent: 'dark',
-			href: 'https://crownos.org'
+				'I’m building CrownOS, a Linux-based desktop operating system designed around AI agents, modern desktop interaction, and a tightly integrated system experience.',
+			stack: ['Rust', 'Linux', 'Wayland', 'Smithay', 'Graphics', 'AI'],
+			accent: '#111111',
+			logo: '/logos/crownos.webp',
+			onAccent: 'light',
+			cta: { label: 'Explore CrownOS', href: 'https://crownos.org' }
 		},
 		{
 			name: 'Imitation Engine',
-			category: 'Developer tool',
+			category: 'RL infrastructure for AI labs',
 			year: '2026',
-			blurb: 'Pixel-perfect website clones, on autopilot.',
 			description:
-				'A Claude Code plugin that crawls a site, extracts its design tokens and interaction graph, and ships a verified Next.js + Tailwind clone — checked with pixel, DOM and interaction diffs at three viewports.',
-			stack: ['Claude Code', 'Playwright', 'Next.js', 'Tailwind'],
-			metric: { value: '98.7%', label: 'Median pixel fidelity' },
-			accent: '#7b61ff',
-			onAccent: 'light',
-			href: 'https://imitationengine.com'
+				'AI infrastructure that turns real websites into reinforcement learning gyms with a single command — crawlers, analysers and agentic AI workflows handle the whole pipeline end to end.',
+			stack: ['TypeScript', 'AI', 'Browser Automation', 'Web'],
+			accent: '#d9552a',
+			logo: '/logos/imitation-engine.svg',
+			onAccent: 'light'
 		},
 		{
 			name: 'Gridlogs',
-			category: 'SaaS',
+			category: 'AI compliance infrastructure',
 			year: '2026',
-			blurb: 'The product backlog, weighted by revenue.',
 			description:
-				'Ingests sales calls from Gong and Fireflies, extracts and clusters feature requests with embeddings, weights them by HubSpot ARR and pushes the winners straight into Linear.',
-			stack: ['Next.js', 'Drizzle', 'Postgres', 'Stripe'],
-			metric: { value: '04', label: 'Integrations, one ranked backlog' },
-			accent: '#2fd48a',
-			onAccent: 'dark'
+				'An AI-powered compliance platform designed to help fintech teams handle complex KYB and AML workflows with less manual work.',
+			stack: ['Next.js', 'TypeScript', 'AI', 'SaaS'],
+			accent: '#001f3f',
+			logo: '/logos/gridlogs.svg',
+			onAccent: 'light'
 		},
 		{
 			name: 'Rankcraft',
-			category: 'Client project',
+			category: 'SEO tooling for Etsy',
 			year: '2024',
-			blurb: 'Etsy SEO analytics for sellers who need the numbers.',
 			description:
-				'A SaaS analytics platform that scrapes, scores and forecasts Etsy listing performance. Built for a client end to end — ingestion pipeline, scoring engine, dashboard and billing.',
-			stack: ['Next.js', 'PostgreSQL', 'Drizzle', 'Python'],
-			metric: { value: '4×', label: 'Faster keyword audits' },
-			accent: '#ff5a36',
-			onAccent: 'dark',
-			href: 'https://github.com/marvelxcodes'
+				'A SaaS product focused on improving Etsy search visibility through keyword research, ranking analysis, and optimization workflows.',
+			stack: ['Next.js', 'TypeScript', 'SEO', 'SaaS'],
+			accent: '#9337fc',
+			logo: '/logos/rankcraft.webp',
+			onAccent: 'light'
 		}
 	] satisfies Project[]
 } as const;

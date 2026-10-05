@@ -7,6 +7,7 @@ import Label from '@/components/primitives/Label';
 import RevealLines from '@/components/primitives/RevealLines';
 import RollingText from '@/components/primitives/RollingText';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
+import ProjectMark from './ProjectMark';
 import ProjectPanel from './ProjectPanel';
 import { cn, pad } from '@/lib/utils';
 
@@ -68,7 +69,7 @@ const Work = () => {
 								<span className='text-title tracking-[-0.045em]'>{project.name}</span>
 								<span className='mono flex items-center justify-between gap-3 pb-1.5'>
 									<span className='flex items-center gap-2'>
-										<span aria-hidden className='size-2.5 shrink-0' style={{ backgroundColor: project.accent }} />
+										<ProjectMark project={project} className='size-5' />
 										{project.category}
 									</span>
 									<ArrowIcon
