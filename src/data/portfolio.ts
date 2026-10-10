@@ -64,7 +64,7 @@ export const stackIcons = [
 ] as const;
 
 export const about = {
-	label: 'About me',
+	heading: ['About', 'me'],
 	paragraphs: [
 		'Creator of CrownOS.',
 		'Software Engineer and Systems Builder in Bengaluru, working with Rust, Linux, Wayland, React, Next.js, TypeScript and AI.',
