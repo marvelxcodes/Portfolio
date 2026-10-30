@@ -1,0 +1,38 @@
+export const metadata = {
+  title: 'Introducing CrownUI',
+  description:
+    'A Rust app framework for native Linux Wayland applications, built to power the CrownOS desktop.',
+  date: '2026-10-31',
+  tag: 'CrownOS'
+};
+
+CrownUI is a Rust app framework for building native Linux Wayland applications. Today we are releasing the first version.
+
+## Why we built it
+
+While building CrownOS, we needed a GPU accelerated UI framework to build native linux apps for wayland based desktops that is fast, lightweight and performant. We tried multiple frameworks like GPUI, Iced, and Xilem. None of them had the deep Linux integration we wanted and had different issues that were dealbreakers for us.
+
+So a few months ago, we decided building one on our own. And here it is.
+
+## What it is
+
+CrownUI brings layout, graphics, input, motion, and widgets together in one framework. We use it to build the desktop experience we want for CrownOS. This release is the foundation, and there is much more to come.
+
+The source is on [GitHub](https://github.com/crown-os/crownui). Add it to your project with:
+
+```sh
+cargo add crownui
+```
+
+## An argument I lost
+
+A year ago, I had a discussion with my friend [Abdullah Danish](https://x.com/null_fn0) about AI and programming. He said AI would soon be better at programming than us. I said AI could not build something like React inside a one million token context window. I had worked on large codebases, and I believed that still gave me the edge.
+
+I underestimated how far context management, subagents, and multi-agent systems would go.
+
+Today I have my own UI framework with the API design and tradeoffs I wanted. It took a few weeks of working through the problem.
+
+I have spent over five years building interfaces, from React to Android to no-code tools. CrownUI fits the way I want to build Linux apps better than anything I have used before.
+
+[Documentation](https://crownos.org/docs/crownui)
+[Check out CrownUI on GitHub](https://github.com/crown-os/crownui).
