@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { useRef } from 'react';
-import { person, social } from '@/data/site';
-import SplitReveal from '@/components/motion/SplitText';
+import Lottie from '@/components/motion/Lottie';
 import Magnetic from '@/components/motion/Magnetic';
 import MorphShape from '@/components/motion/MorphShape';
-import Lottie from '@/components/motion/Lottie';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import SplitReveal from '@/components/motion/SplitText';
+import { person, social } from '@/data/site';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 
 /**
  * juanmora.co's closer: a single peach plate carrying one oversized invitation,
@@ -81,10 +81,7 @@ const Contact = () => {
 				</h2>
 
 				<div className='flex flex-col gap-10'>
-					<a
-						href={`mailto:${person.email}`}
-						className='link-underline display block break-all text-h3 leading-none'
-					>
+					<a href={`mailto:${person.email}`} className='link-underline display block break-all text-h3 leading-none'>
 						{person.email}
 					</a>
 

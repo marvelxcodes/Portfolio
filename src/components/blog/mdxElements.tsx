@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import type { MDXComponents } from 'mdx/types';
+import Link from 'next/link';
 import type { ComponentProps } from 'react';
+import { cn } from '@/lib/utils';
 import Callout from './Callout';
 import Figure from './Figure';
-import { cn } from '@/lib/utils';
 
 const isInternal = (href = '') => href.startsWith('/') || href.startsWith('#');
 
@@ -30,11 +30,21 @@ export const mdxElements: MDXComponents = {
 			{...props}
 		/>
 	),
-	ul: (props) => <ul className='my-6 flex flex-col gap-2 pl-5 text-[1.125rem] leading-[1.6] [list-style:square]' {...props} />,
-	ol: (props) => <ol className='my-6 flex flex-col gap-2 pl-6 text-[1.125rem] leading-[1.6] [list-style:decimal-leading-zero]' {...props} />,
+	ul: (props) => (
+		<ul className='my-6 flex flex-col gap-2 pl-5 text-[1.125rem] leading-[1.6] [list-style:square]' {...props} />
+	),
+	ol: (props) => (
+		<ol
+			className='my-6 flex flex-col gap-2 pl-6 text-[1.125rem] leading-[1.6] [list-style:decimal-leading-zero]'
+			{...props}
+		/>
+	),
 	li: (props) => <li className='pl-1 marker:text-dim' {...props} />,
 	blockquote: (props) => (
-		<blockquote className='my-10 border-l-2 border-ink pl-(--gutter) text-about tracking-[-0.03em] [&_p]:text-[length:inherit] [&_p]:leading-[1.15]' {...props} />
+		<blockquote
+			className='my-10 border-l-2 border-ink pl-(--gutter) text-about tracking-[-0.03em] [&_p]:text-[length:inherit] [&_p]:leading-[1.15]'
+			{...props}
+		/>
 	),
 	hr: () => <hr className='my-14 border-t' />,
 	table: (props) => (

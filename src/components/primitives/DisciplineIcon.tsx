@@ -67,7 +67,11 @@ const Orbit = () => (
 			<g
 				key={radius}
 				className='animate-[orbit_9s_linear_infinite]'
-				style={{ ...centered, animationDuration: `${9 + index * 4}s`, animationDirection: index ? 'reverse' : 'normal' }}
+				style={{
+					...centered,
+					animationDuration: `${9 + index * 4}s`,
+					animationDirection: index ? 'reverse' : 'normal'
+				}}
 			>
 				<circle cx={CENTER + index * 4} cy={CENTER} r={radius} />
 				<rect x={CENTER + index * 4 - 2} y={CENTER - radius - 2} width={4} height={4} fill='currentColor' />
@@ -81,7 +85,14 @@ const shapes = { rings: Rings, globe: Globe, burst: Burst, orbit: Orbit } as con
 const DisciplineIcon = ({ icon, className }: { icon: Discipline['icon']; className?: string }) => {
 	const Shape = shapes[icon];
 	return (
-		<svg viewBox='0 0 120 120' fill='none' stroke='currentColor' strokeWidth={0.6} aria-hidden className={cn('size-44 overflow-visible', className)}>
+		<svg
+			viewBox='0 0 120 120'
+			fill='none'
+			stroke='currentColor'
+			strokeWidth={0.6}
+			aria-hidden
+			className={cn('size-44 overflow-visible', className)}
+		>
 			<circle cx={CENTER} cy={CENTER} r={RADIUS + 4} strokeDasharray='1 2.5' />
 			<Shape />
 		</svg>

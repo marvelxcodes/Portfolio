@@ -1,7 +1,7 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { useReducedMotion } from 'motion/react';
+import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 
 /**
@@ -9,10 +9,10 @@ import { cn } from '@/lib/utils';
  * expression support — which is all these three animations need. Loaded
  * client-side only so the player never reaches the server render.
  */
-const Player = dynamic(
-	() => import('lottie-react').then((mod) => mod.LottieLight),
-	{ ssr: false, loading: () => <span aria-hidden /> }
-);
+const Player = dynamic(() => import('lottie-react').then((mod) => mod.LottieLight), {
+	ssr: false,
+	loading: () => <span aria-hidden />
+});
 
 type LottieProps = {
 	/** File under /public/lottie, without the extension. */

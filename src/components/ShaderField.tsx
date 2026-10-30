@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { ShaderMount } from '@paper-design/shaders-react';
-import { fieldFragment } from '@/shaders/field';
-import { cn, clamp, lerp } from '@/lib/utils';
-import { gsap, ScrollTrigger, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { useEffect, useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap, ScrollTrigger } from '@/lib/gsap';
+import { clamp, cn, lerp } from '@/lib/utils';
+import { fieldFragment } from '@/shaders/field';
 
 type RGB = [number, number, number];
 
@@ -50,13 +50,7 @@ type Props = {
  * runs an opaque cream, so a fixed plate would be permanently invisible. Two
  * scoped instances cost less and are actually seen.
  */
-const ShaderField = ({
-	palette,
-	className,
-	trigger,
-	speed = 0.5,
-	opacity = 1
-}: Props) => {
+const ShaderField = ({ palette, className, trigger, speed = 0.5, opacity = 1 }: Props) => {
 	const [ready, setReady] = useState(false);
 	const scroll = useRef(0);
 	const velocity = useRef(0);
@@ -89,10 +83,7 @@ const ShaderField = ({
 				setUniformState((prev) => {
 					const nextScroll = lerp(prev.scroll, scroll.current, 0.08);
 					const nextVelocity = lerp(prev.velocity, velocity.current, 0.06);
-					if (
-						Math.abs(nextScroll - prev.scroll) < 0.0004 &&
-						Math.abs(nextVelocity - prev.velocity) < 0.0008
-					) {
+					if (Math.abs(nextScroll - prev.scroll) < 0.0004 && Math.abs(nextVelocity - prev.velocity) < 0.0008) {
 						return prev;
 					}
 					return { scroll: nextScroll, velocity: nextVelocity };

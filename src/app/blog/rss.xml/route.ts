@@ -5,7 +5,10 @@ import { absoluteUrl, postPath } from '@/lib/seo';
 export const dynamic = 'force-static';
 
 const escapeXml = (value: string) =>
-	value.replace(/[<>&'"]/g, (char) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' })[char] ?? char);
+	value.replace(
+		/[<>&'"]/g,
+		(char) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' })[char] ?? char
+	);
 
 export const GET = async () => {
 	const posts = await getAllPosts();

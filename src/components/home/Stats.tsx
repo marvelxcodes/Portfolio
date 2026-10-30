@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import { stats, type Stat } from '@/data/portfolio';
-import { useInView } from '@/hooks/useInView';
 import RollingText, { zeroDigits } from '@/components/primitives/RollingText';
+import { type Stat, stats } from '@/data/portfolio';
+import { useInView } from '@/hooks/useInView';
 import { cn } from '@/lib/utils';
 
 type StatTileProps = { stat: Stat; visible: boolean; className?: string; labelClassName?: string };
@@ -15,7 +15,7 @@ const StatTile = ({ stat, visible, className, labelClassName }: StatTileProps) =
 			stagger={0.12}
 			className='text-[clamp(4rem,9vw,10rem)] font-medium leading-none tracking-[-0.06em]'
 		/>
-		<p className={labelClassName}>{stat.label}</p>
+		<p className={cn('text-3xl mx-3', labelClassName)}>{stat.label}</p>
 	</div>
 );
 

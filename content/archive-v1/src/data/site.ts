@@ -159,7 +159,7 @@ export const projects: Project[] = [
 	{
 		index: '02',
 		name: 'Rankcraft',
-		year: '2024',
+		year: '2023',
 		blurb: 'Etsy SEO analytics for sellers who need the numbers',
 		description:
 			'A SaaS analytics platform that scrapes, scores and forecasts Etsy listing performance. Built for a client, shipped end to end — ingestion pipeline, scoring engine, dashboard and billing.',

@@ -5,8 +5,18 @@ const PAPER = '#ffffff';
 const MARK_WIDTH_RATIO = 0.6;
 
 const MarkIcon = ({ size }: { size: number }) => (
-	<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', background: INK }}>
+	<div
+		style={{
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			width: '100%',
+			height: '100%',
+			background: INK
+		}}
+	>
 		<svg
+			aria-hidden
 			width={size * MARK_WIDTH_RATIO}
 			viewBox='0 0 120 80'
 			fill='none'

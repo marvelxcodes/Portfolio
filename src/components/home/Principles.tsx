@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { principles } from '@/data/portfolio';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
 import Label from '@/components/primitives/Label';
 import RollingText from '@/components/primitives/RollingText';
-import QuoteText from './QuoteText';
+import { principles } from '@/data/portfolio';
 import { pad, wrapIndex } from '@/lib/utils';
+import QuoteText from './QuoteText';
 
 const AUTOPLAY_SECONDS = 9;
 const items = principles.items;
@@ -21,6 +21,7 @@ const Principles = () => {
 		<section
 			id='principles'
 			aria-roledescription='carousel'
+			aria-label={principles.label}
 			className='group/principles relative z-10 grid scroll-mt-(--header-h) border-t lg:h-[calc(100svh-var(--header-h))] lg:grid-cols-4'
 		>
 			<div className='flex flex-col bg-paper lg:border-r'>
@@ -39,20 +40,39 @@ const Principles = () => {
 						className='absolute -top-px left-0 h-0.5 w-full origin-left animate-[grow_linear] bg-ink group-hover/principles:[animation-play-state:paused] motion-reduce:hidden'
 						style={{ animationDuration: `${AUTOPLAY_SECONDS}s` }}
 					/>
-					<button type='button' aria-label='Previous principle' onClick={() => step(-1)} className='fill flex items-center justify-center [--fill:var(--c-plate)]'>
+					<button
+						type='button'
+						aria-label='Previous principle'
+						onClick={() => step(-1)}
+						className='fill flex items-center justify-center [--fill:var(--c-plate)]'
+					>
 						<ArrowIcon direction='left' />
 					</button>
-					<button type='button' aria-label='Next principle' onClick={() => step(1)} className='fill flex items-center justify-center [--fill:var(--c-plate)]'>
+					<button
+						type='button'
+						aria-label='Next principle'
+						onClick={() => step(1)}
+						className='fill flex items-center justify-center [--fill:var(--c-plate)]'
+					>
 						<ArrowIcon />
 					</button>
 				</div>
 
 				<div className='relative hidden aspect-[4/5] border-t lg:block lg:aspect-auto lg:h-[42%]'>
-					<Image src={principles.portrait} alt='Portrait of Rama Krishnan' fill sizes='25vw' className='object-cover grayscale' />
+					<Image
+						src={principles.portrait}
+						alt='Portrait of Rama Krishnan'
+						fill
+						sizes='25vw'
+						className='object-cover grayscale'
+					/>
 				</div>
 			</div>
 
-			<div aria-live='polite' className='flex flex-col gap-8 border-t bg-paper p-(--gutter) lg:col-span-2 lg:border-t-0 lg:pr-[8%]'>
+			<div
+				aria-live='polite'
+				className='flex flex-col gap-8 border-t bg-paper p-(--gutter) lg:col-span-2 lg:border-t-0 lg:pr-[8%]'
+			>
 				<span aria-hidden className='text-title font-semibold leading-none'>
 					“
 				</span>

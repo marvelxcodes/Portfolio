@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef, type ReactNode } from 'react';
-import { cn } from '@/lib/utils';
-import { gsap, ScrollTrigger, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { type ReactNode, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap, ScrollTrigger } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 type MarqueeProps = {
 	children: ReactNode;
@@ -19,13 +19,7 @@ type MarqueeProps = {
  * Infinite belt. The track is duplicated once and wrapped at -50%, so the seam
  * never lands inside the viewport regardless of content width.
  */
-const Marquee = ({
-	children,
-	className,
-	speed = 34,
-	direction = -1,
-	reactive = true
-}: MarqueeProps) => {
+const Marquee = ({ children, className, speed = 34, direction = -1, reactive = true }: MarqueeProps) => {
 	const ref = useRef<HTMLDivElement>(null);
 
 	useIsomorphicLayoutEffect(() => {

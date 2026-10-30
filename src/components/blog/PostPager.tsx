@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import type { PostSummary } from '@/lib/blog';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
+import type { PostSummary } from '@/lib/blog';
 
 type PagerTileProps = { post: PostSummary | null; label: string; direction: 'left' | 'right' };
 

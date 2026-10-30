@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { cn } from '@/lib/utils';
 import { nav, person } from '@/data/site';
-import { gsap, ScrollTrigger, registerGsap } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, registerGsap, ScrollTrigger } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 /**
  * Sticky rail. Hides on scroll-down, returns on scroll-up, and carries a
@@ -54,31 +54,28 @@ const Nav = () => {
 					if (barRef.current) {
 						barRef.current.style.transform = `scaleX(${self.progress})`;
 					}
-					el.dataset.solid =
-						!overDarkHero || self.scroll() > 80 ? 'true' : 'false';
+					el.dataset.solid = !overDarkHero || self.scroll() > 80 ? 'true' : 'false';
 				}
 			});
 
 			let inkCount = 0;
 			const navH = el.offsetHeight || 68;
 
-			const schemes = gsap.utils
-				.toArray<HTMLElement>('[data-scheme="ink"]')
-				.map((section) =>
-					ScrollTrigger.create({
-						trigger: section,
-						start: `top top+=${navH * 0.5}`,
-						end: `bottom top+=${navH * 0.5}`,
-						onToggle: (self) => {
-							inkCount = Math.max(0, inkCount + (self.isActive ? 1 : -1));
-							el.dataset.chrome = inkCount > 0 ? 'light' : 'dark';
-						}
-					})
-				);
+			const schemes = gsap.utils.toArray<HTMLElement>('[data-scheme="ink"]').map((section) =>
+				ScrollTrigger.create({
+					trigger: section,
+					start: `top top+=${navH * 0.5}`,
+					end: `bottom top+=${navH * 0.5}`,
+					onToggle: (self) => {
+						inkCount = Math.max(0, inkCount + (self.isActive ? 1 : -1));
+						el.dataset.chrome = inkCount > 0 ? 'light' : 'dark';
+					}
+				})
+			);
 
 			return () => {
 				progress.kill();
-				schemes.forEach((s) => s.kill());
+				for (const scheme of schemes) scheme.kill();
 				hide.kill();
 			};
 		}, ref);
@@ -162,10 +159,7 @@ const Nav = () => {
 				</div>
 
 				<span className='block h-px w-full group-data-[chrome=light]:bg-cream-50/25 group-data-[chrome=dark]:bg-cream-400'>
-					<span
-						ref={barRef}
-						className='block h-full origin-left scale-x-0 bg-peach-400'
-					/>
+					<span ref={barRef} className='block h-full origin-left scale-x-0 bg-peach-400' />
 				</span>
 			</header>
 
@@ -194,11 +188,7 @@ const Nav = () => {
 							</Link>
 						))}
 					</nav>
-					<Link
-						href='/contact'
-						onClick={() => setOpen(false)}
-						className='btn btn-peach justify-center'
-					>
+					<Link href='/contact' onClick={() => setOpen(false)} className='btn btn-peach justify-center'>
 						Start a project
 					</Link>
 				</div>

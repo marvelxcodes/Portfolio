@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import { cn } from '@/lib/utils';
 import { Shape, type ShapeName } from '@/components/ui/shapes';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 export type MorphRow = {
 	/** the glyphs that make up this row */
@@ -60,9 +60,7 @@ const MorphHeadline = ({ rows, className, label, delay = 0.25 }: Props) => {
 				const faces = gsap.utils.toArray<HTMLElement>('[data-face="out"]');
 				const backs = gsap.utils.toArray<HTMLElement>('[data-face="in"]');
 				const flair = gsap.utils.toArray<HTMLElement>('.flair');
-				const counters = gsap.utils.toArray<HTMLElement>(
-					'.morph-counter > span'
-				);
+				const counters = gsap.utils.toArray<HTMLElement>('.morph-counter > span');
 
 				/* Measure both glyphs before anything is transformed: a face already
 			   rotated on X projects a wider box under perspective, so widths taken
@@ -82,7 +80,7 @@ const MorphHeadline = ({ rows, className, label, delay = 0.25 }: Props) => {
 					})
 					.filter((pair): pair is NonNullable<typeof pair> => pair !== null);
 
-				pairs.forEach(({ clip, front }) => gsap.set(clip, { width: front }));
+				for (const { clip, front } of pairs) gsap.set(clip, { width: front });
 
 				gsap.set(el, { opacity: 1 });
 				gsap.set(backs, {
@@ -118,11 +116,7 @@ const MorphHeadline = ({ rows, className, label, delay = 0.25 }: Props) => {
 
 				/* the counter slides through its widened cell and parks */
 				counters.forEach((c) => {
-					intro.from(
-						c,
-						{ xPercent: -108, duration: 1.4, ease: 'expoOut' },
-						'-=1.05'
-					);
+					intro.from(c, { xPercent: -108, duration: 1.4, ease: 'expoOut' }, '-=1.05');
 				});
 
 				/* the flip loop — front falls forward, back rises into its place */
@@ -142,11 +136,7 @@ const MorphHeadline = ({ rows, className, label, delay = 0.25 }: Props) => {
 							ease: 'primary',
 							stagger: 0.06
 						})
-						.to(
-							backs,
-							{ rotationX: 0, duration: 0.55, ease: 'primary', stagger: 0.06 },
-							'<'
-						)
+						.to(backs, { rotationX: 0, duration: 0.55, ease: 'primary', stagger: 0.06 }, '<')
 						/* the row re-flows to the incoming word as it lands */
 						.to(
 							pairs.map((p) => p.clip),
@@ -196,29 +186,18 @@ const MorphHeadline = ({ rows, className, label, delay = 0.25 }: Props) => {
 	}, [delay]);
 
 	return (
-		<div
-			ref={root}
-			data-anim='fade'
-			className={cn('morph', className)}
-		>
+		<div ref={root} data-anim='fade' className={cn('morph', className)}>
 			<span className='sr-only'>{label}</span>
 
 			{rows.map((row, r) => (
-				<span
-					className='morph-row'
-					key={r}
-					aria-hidden
-				>
+				<span className='morph-row' key={r} aria-hidden>
 					{row.text.split('').map((glyph, i) => {
 						const back = row.alt?.[i];
 						const mark = row.flair?.[i];
 						const counter = row.counter?.at === i ? row.counter : undefined;
 
 						return (
-							<span
-								className='morph-cell'
-								key={`${r}-${i}`}
-							>
+							<span className='morph-cell' key={`${r}-${i}`}>
 								{mark && (
 									<span className={cn('flair', mark.className)}>
 										<Shape name={mark.name} />
@@ -226,19 +205,12 @@ const MorphHeadline = ({ rows, className, label, delay = 0.25 }: Props) => {
 								)}
 
 								<span className='morph-clip'>
-									<span
-										className='morph-face'
-										data-face='out'
-										data-flip={back ? 'yes' : 'no'}
-									>
+									<span className='morph-face' data-face='out' data-flip={back ? 'yes' : 'no'}>
 										{glyph === ' ' ? ' ' : glyph}
 									</span>
 
 									{back && (
-										<span
-											className='morph-face-in'
-											data-face='in'
-										>
+										<span className='morph-face-in' data-face='in'>
 											{back === ' ' ? ' ' : back}
 										</span>
 									)}

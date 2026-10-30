@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { halftoneFragment, halftoneVertex } from '@/shaders/halftone';
 import { hexToUnitRgb, lerp, readCssVar } from '@/lib/utils';
+import { halftoneFragment, halftoneVertex } from '@/shaders/halftone';
 
 const DITHER_CELL_CSS_PX = 2;
 const POINTER_EASE = 0.06;
@@ -41,6 +41,7 @@ const HalftoneCanvas = () => {
 
 		const program = createProgram(gl);
 		if (!program) return;
+		// biome-ignore lint/correctness/useHookAtTopLevel: WebGL method, not a React hook
 		gl.useProgram(program);
 
 		const triangle = gl.createBuffer();

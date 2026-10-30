@@ -1,17 +1,17 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
+import PostPager from '@/components/blog/PostPager';
+import ShareLinks from '@/components/blog/ShareLinks';
+import TableOfContents from '@/components/blog/TableOfContents';
+import ArrowIcon from '@/components/primitives/ArrowIcon';
+import Label from '@/components/primitives/Label';
+import RevealLines from '@/components/primitives/RevealLines';
+import JsonLd from '@/components/seo/JsonLd';
 import { blog, person } from '@/data/portfolio';
 import { getAdjacentPosts, getPost, getPostSlugs } from '@/lib/blog';
 import { absoluteUrl, blogPostingSchema, breadcrumbSchema, postPath, sharedOpenGraph } from '@/lib/seo';
 import { formatPostDate } from '@/lib/utils';
-import ArrowIcon from '@/components/primitives/ArrowIcon';
-import Label from '@/components/primitives/Label';
-import RevealLines from '@/components/primitives/RevealLines';
-import TableOfContents from '@/components/blog/TableOfContents';
-import ShareLinks from '@/components/blog/ShareLinks';
-import PostPager from '@/components/blog/PostPager';
-import JsonLd from '@/components/seo/JsonLd';
 
 type PostPageProps = { params: Promise<{ slug: string }> };
 
@@ -40,7 +40,12 @@ export const generateMetadata = async ({ params }: PostPageProps): Promise<Metad
 			authors: [person.name],
 			tags: [post.tag]
 		},
-		twitter: { card: 'summary_large_image', title: post.title, description: post.description, creator: `@${person.handle}` }
+		twitter: {
+			card: 'summary_large_image',
+			title: post.title,
+			description: post.description,
+			creator: `@${person.handle}`
+		}
 	};
 };
 
@@ -52,7 +57,9 @@ const PostPage = async ({ params }: PostPageProps) => {
 	const { Content } = post;
 	const details = [
 		{ term: 'Published', value: <time dateTime={post.date}>{formatPostDate(post.date, 'long')}</time> },
-		...(post.updated ? [{ term: 'Updated', value: <time dateTime={post.updated}>{formatPostDate(post.updated, 'long')}</time> }] : []),
+		...(post.updated
+			? [{ term: 'Updated', value: <time dateTime={post.updated}>{formatPostDate(post.updated, 'long')}</time> }]
+			: []),
 		{ term: 'Reading time', value: `${post.readingMinutes} min` },
 		{ term: 'Topic', value: post.tag }
 	];

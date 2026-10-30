@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { MARK_PATH } from '@/components/primitives/Mark';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 import { markSiteReady } from '@/lib/ready';
-import { MARK_PATH } from '@/components/primitives/Mark';
 
 const FONT_WAIT_LIMIT_MS = 1200;
 
@@ -44,9 +44,29 @@ const Preloader = () => {
 	if (done) return null;
 
 	return (
-		<div ref={root} aria-hidden className='fixed inset-0 z-100 flex items-center justify-center bg-ink text-paper [clip-path:inset(0_0_0_0)]'>
-			<svg viewBox='0 0 120 80' fill='none' stroke='currentColor' strokeWidth={8} strokeLinecap='round' strokeLinejoin='round' className='w-16'>
-				<path data-mark d={MARK_PATH} pathLength={1} strokeDasharray='1' strokeDashoffset='1' style={{ transformOrigin: 'center', transformBox: 'fill-box' }} />
+		<div
+			ref={root}
+			aria-hidden
+			className='fixed inset-0 z-100 flex items-center justify-center bg-ink text-paper [clip-path:inset(0_0_0_0)]'
+		>
+			<svg
+				aria-hidden
+				viewBox='0 0 120 80'
+				fill='none'
+				stroke='currentColor'
+				strokeWidth={8}
+				strokeLinecap='round'
+				strokeLinejoin='round'
+				className='w-16'
+			>
+				<path
+					data-mark
+					d={MARK_PATH}
+					pathLength={1}
+					strokeDasharray='1'
+					strokeDashoffset='1'
+					style={{ transformOrigin: 'center', transformBox: 'fill-box' }}
+				/>
 			</svg>
 		</div>
 	);

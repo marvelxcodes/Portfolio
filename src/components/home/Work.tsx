@@ -1,17 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { work } from '@/data/portfolio';
-import FillLink from '@/components/primitives/FillLink';
-import Label from '@/components/primitives/Label';
-import RevealLines from '@/components/primitives/RevealLines';
-import RollingText from '@/components/primitives/RollingText';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
+import RevealLines from '@/components/primitives/RevealLines';
+import { work } from '@/data/portfolio';
+import { cn } from '@/lib/utils';
 import ProjectMark from './ProjectMark';
 import ProjectPanel from './ProjectPanel';
-import { cn, pad } from '@/lib/utils';
 
 const projects = work.projects;
+const [selectedTitle, workTitle] = work.title;
+const titleClass = 'text-giant font-medium tracking-[-0.06em]';
+const titleTileClass = 'border-b px-(--gutter) pt-20 pb-6 lg:pt-36 lg:pb-8';
 
 const Work = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -26,33 +26,17 @@ const Work = () => {
 	return (
 		<section id='work' className='relative z-10 scroll-mt-(--header-h) border-t'>
 			<div className='grid lg:grid-cols-2'>
-				<div className='tile border-b px-(--gutter) pt-3 pb-6 lg:border-r'>
-					<RevealLines lines={[work.title]} className='text-giant font-medium tracking-[-0.06em]' />
+				<div className={cn('tile lg:border-r', titleTileClass)}>
+					<h2 className='sr-only'>{work.title.join(' ')}</h2>
+					<RevealLines as='p' lines={[selectedTitle]} className={titleClass} />
 				</div>
-				<div className='h-40 border-b lg:h-auto' />
+				<div aria-hidden className={titleTileClass}>
+					<RevealLines as='p' delay={0.12} lines={[workTitle]} className={titleClass} />
+				</div>
 			</div>
 
 			<div className='grid lg:grid-cols-2 lg:divide-x'>
-				<div className='grid bg-paper sm:grid-cols-2 sm:divide-x'>
-					<div className='flex flex-col'>
-						<div className='flex min-h-60 flex-col justify-between gap-10 border-b p-(--gutter) lg:h-(--tile-h)'>
-							<Label>{work.label}</Label>
-							<div className='mono flex items-center justify-between'>
-								<span>{active.name}</span>
-								<span className='flex items-center gap-1 text-dim'>
-									<RollingText value={pad(activeIndex + 1)} /> - {pad(projects.length)}
-								</span>
-							</div>
-						</div>
-						<ProjectPanel project={active} />
-					</div>
-					<div className='flex flex-col gap-16 border-t p-(--gutter) sm:border-t-0'>
-						<p>{work.intro}</p>
-						<FillLink href={work.cta.href} arrow='up-right' className='mono w-50 px-3 py-2.5'>
-							{work.cta.label}
-						</FillLink>
-					</div>
-				</div>
+				<ProjectPanel project={active} />
 
 				<ul className='divide-y border-y bg-paper lg:border-t-0' onMouseLeave={() => setHoveredIndex(null)}>
 					{projects.map((project, index) => (

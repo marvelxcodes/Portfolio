@@ -2,8 +2,8 @@
 
 import Lenis from 'lenis';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, type PropsWithChildren } from 'react';
-import { gsap, ScrollTrigger, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { type PropsWithChildren, useEffect, useRef } from 'react';
+import { gsap, prefersReducedMotion, registerGsap, ScrollTrigger } from '@/lib/gsap';
 
 /**
  * Lenis drives scroll; GSAP's ticker drives Lenis. ScrollTrigger is then told
@@ -24,7 +24,7 @@ const SmoothScroll = ({ children }: PropsWithChildren) => {
 
 		const lenis = new Lenis({
 			duration: 1.1,
-			easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+			easing: (t: number) => Math.min(1, 1.001 - 2 ** (-10 * t)),
 			smoothWheel: true,
 			syncTouch: false,
 			touchMultiplier: 1.6,
@@ -62,6 +62,7 @@ const SmoothScroll = ({ children }: PropsWithChildren) => {
 	}, []);
 
 	// a route change resets both scroll position and every trigger's cache
+	// biome-ignore lint/correctness/useExhaustiveDependencies: pathname is the trigger, not a value read by the effect
 	useEffect(() => {
 		lenisRef.current?.scrollTo(0, { immediate: true });
 		window.scrollTo(0, 0);

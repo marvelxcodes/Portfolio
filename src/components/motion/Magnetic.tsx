@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, type ReactNode } from 'react';
-import { motion, useMotionValue, useSpring, useReducedMotion } from 'motion/react';
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
+import { type ReactNode, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 type MagneticProps = {

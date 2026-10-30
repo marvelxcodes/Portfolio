@@ -1,6 +1,6 @@
-import { notFound as copy } from '@/data/portfolio';
 import FillLink from '@/components/primitives/FillLink';
 import Label from '@/components/primitives/Label';
+import { notFound as copy } from '@/data/portfolio';
 
 const NotFound = () => (
 	<main className='relative z-10 grid min-h-[calc(100svh-var(--header-h))] lg:grid-cols-2'>

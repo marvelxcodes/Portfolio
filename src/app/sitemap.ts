@@ -9,7 +9,6 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
 	return [
 		{ url: absoluteUrl('/'), lastModified: latestPost, changeFrequency: 'monthly', priority: 1 },
 		{ url: absoluteUrl('/blog'), lastModified: latestPost, changeFrequency: 'weekly', priority: 0.8 },
-		{ url: absoluteUrl('/contact'), changeFrequency: 'yearly', priority: 0.5 },
 		...posts.map((post) => ({
 			url: absoluteUrl(postPath(post.slug)),
 			lastModified: post.updated ?? post.date,

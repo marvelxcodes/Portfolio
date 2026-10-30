@@ -1,12 +1,12 @@
 'use client';
 
-import { services } from '@/data/site';
 import CharFill from '@/components/motion/CharFill';
-import SplitReveal from '@/components/motion/SplitText';
-import Reveal from '@/components/motion/Reveal';
-import Parallax from '@/components/motion/Parallax';
 import MorphShape from '@/components/motion/MorphShape';
-import { type ShapeName } from '@/components/ui/shapes';
+import Parallax from '@/components/motion/Parallax';
+import Reveal from '@/components/motion/Reveal';
+import SplitReveal from '@/components/motion/SplitText';
+import type { ShapeName } from '@/components/ui/shapes';
+import { services } from '@/data/site';
 
 /** each row gets its own mark, morphing on scroll rather than on a timer */
 const MARKS: ShapeName[][] = [
@@ -25,10 +25,7 @@ const MARKS: ShapeName[][] = [
  * genuine path-to-path tween is doing the talking.
  */
 const Services = () => (
-	<section
-		id='services'
-		className='relative z-10 bg-cream-100 py-[var(--section-lg)]'
-	>
+	<section id='services' className='relative z-10 bg-cream-100 py-[var(--section-lg)]'>
 		<div className='shell'>
 			<div className='grid gap-y-8 lg:grid-cols-12'>
 				<p className='eyebrow text-stone-500 lg:col-span-2'>
@@ -36,27 +33,17 @@ const Services = () => (
 					<span className='eyebrow-word'>expert</span>
 				</p>
 
-				<CharFill
-					as='h2'
-					className='display text-h3 text-stone-900 lg:col-span-10'
-					start='top 84%'
-					end='bottom 62%'
-				>
+				<CharFill as='h2' className='display text-h3 text-stone-900 lg:col-span-10' start='top 84%' end='bottom 62%'>
 					I help teams succeed on projects like:
 				</CharFill>
 			</div>
 
 			<ul className='mt-[var(--section-md)] flex flex-col'>
 				{services.map((service, i) => (
-					<li
-						key={service.index}
-						className='border-t border-cream-400 py-[clamp(2.5rem,6vw,5rem)]'
-					>
+					<li key={service.index} className='border-t border-cream-400 py-[clamp(2.5rem,6vw,5rem)]'>
 						<div className='grid items-start gap-x-[var(--site-gutter)] gap-y-6 lg:grid-cols-12'>
 							<div className='flex items-center gap-5 lg:col-span-2'>
-								<span className='font-mono text-xs tabular-nums tracking-wider text-stone-400'>
-									{service.index}
-								</span>
+								<span className='font-mono text-xs tabular-nums tracking-wider text-stone-400'>{service.index}</span>
 								<Parallax distance={i % 2 ? 44 : -44}>
 									<MorphShape
 										sequence={MARKS[i % MARKS.length]}
@@ -72,10 +59,7 @@ const Services = () => (
 								</SplitReveal>
 							</h3>
 
-							<Reveal
-								className='max-w-[42ch] text-base leading-relaxed text-stone-500 lg:col-span-4'
-								delay={0.12}
-							>
+							<Reveal className='max-w-[42ch] text-base leading-relaxed text-stone-500 lg:col-span-4' delay={0.12}>
 								{service.body}
 							</Reveal>
 						</div>

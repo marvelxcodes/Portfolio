@@ -1,7 +1,7 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { THEME_KEY } from '@/lib/theme';
+import { cn } from '@/lib/utils';
 
 const toggleTheme = () => {
 	const root = document.documentElement;

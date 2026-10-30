@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef, type ElementType, type ReactNode } from 'react';
-import { cn } from '@/lib/utils';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { type ElementType, type ReactNode, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 type Props = {
 	text: string;

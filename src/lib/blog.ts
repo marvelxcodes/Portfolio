@@ -1,7 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { cache, type ComponentType } from 'react';
 import GithubSlugger from 'github-slugger';
+import { type ComponentType, cache } from 'react';
 
 const BLOG_DIRECTORY = path.join(process.cwd(), 'src/content/blog');
 const MDX_EXTENSION = '.mdx';

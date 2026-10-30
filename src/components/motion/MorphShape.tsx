@@ -1,10 +1,10 @@
 'use client';
 
 import { useId, useRef } from 'react';
-import { cn } from '@/lib/utils';
 import { SHAPES, type ShapeName } from '@/components/ui/shapes';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 type Props = {
 	/** the sequence to walk through; the first entry is the resting state */
@@ -25,13 +25,7 @@ type Props = {
  * different node counts still interpolate cleanly. That is the whole reason the
  * marks in `shapes.tsx` are single filled paths on one shared 100×100 box.
  */
-const MorphShape = ({
-	sequence,
-	className,
-	scrub = false,
-	trigger,
-	spin = false
-}: Props) => {
+const MorphShape = ({ sequence, className, scrub = false, trigger, spin = false }: Props) => {
 	const root = useRef<SVGSVGElement>(null);
 	const uid = useId().replace(/:/g, '');
 
@@ -89,13 +83,7 @@ const MorphShape = ({
 	}, [sequence, scrub, trigger, spin]);
 
 	return (
-		<svg
-			ref={root}
-			viewBox='0 0 100 100'
-			className={cn('overflow-visible', className)}
-			aria-hidden
-			focusable='false'
-		>
+		<svg ref={root} viewBox='0 0 100 100' className={cn('overflow-visible', className)} aria-hidden focusable='false'>
 			<path id={`morph-${uid}`} d={SHAPES[sequence[0]]} fill='currentColor' />
 		</svg>
 	);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, type ElementType } from 'react';
+import { type ElementType, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 import { gsap, prefersReducedMotion, registerGsap, ScrollTrigger } from '@/lib/gsap';
 import { onSiteReady } from '@/lib/ready';

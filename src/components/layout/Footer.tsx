@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import { clocks, footer, person, social } from '@/data/portfolio';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
+import { clocks, footer, mailtoHref, person, social } from '@/data/portfolio';
 import FooterClock from './FooterClock';
 import SectionLinks from './SectionLinks';
 
@@ -23,7 +22,7 @@ const Footer = () => {
 			</div>
 
 			<div className='grid grid-cols-2 divide-x border-t lg:col-start-2'>
-				<a href={`mailto:${person.email}`} className='fill truncate p-(--gutter) [--fill:var(--c-plate)]'>
+				<a href={mailtoHref} className='fill truncate p-(--gutter) [--fill:var(--c-plate)]'>
 					{person.email}
 				</a>
 				<ul className='flex flex-col divide-y'>
@@ -54,8 +53,8 @@ const Footer = () => {
 				</div>
 			</div>
 
-			<Link
-				href='/contact'
+			<a
+				href={mailtoHref}
 				className='fill fill-y group relative flex min-h-[50svh] flex-col justify-between bg-plate p-(--gutter) text-ink [--fill:var(--c-ink)] hover:text-paper lg:min-h-0'
 			>
 				<span className='max-w-[14ch] text-title font-medium tracking-[-0.04em]'>{footer.closer}</span>
@@ -72,7 +71,7 @@ const Footer = () => {
 						<path d='M2 118 118 2M118 2v116' />
 					</svg>
 				</span>
-			</Link>
+			</a>
 		</footer>
 	);
 };

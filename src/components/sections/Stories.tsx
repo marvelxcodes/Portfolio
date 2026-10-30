@@ -2,13 +2,13 @@
 
 import Image from 'next/image';
 import { useRef } from 'react';
-import { projects } from '@/data/site';
-import SplitReveal from '@/components/motion/SplitText';
 import Reveal from '@/components/motion/Reveal';
 import Scramble from '@/components/motion/Scramble';
-import { pad } from '@/lib/utils';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import SplitReveal from '@/components/motion/SplitText';
+import { projects } from '@/data/site';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
+import { pad } from '@/lib/utils';
 
 /**
  * bymonolog.com's Success Stories, rebuilt.
@@ -51,11 +51,7 @@ const Stories = () => {
 	}, []);
 
 	return (
-		<section
-			ref={root}
-			id='stories'
-			className='relative z-10 bg-cream-100 pb-[var(--section-md)]'
-		>
+		<section ref={root} id='stories' className='relative z-10 bg-cream-100 pb-[var(--section-md)]'>
 			<div className='plate bg-cream-300 pt-[var(--section-lg)]'>
 				<div className='shell'>
 					<div className='flex flex-col gap-y-12 lg:flex-row lg:gap-x-[var(--site-gutter)]'>
@@ -110,9 +106,7 @@ const Stories = () => {
 															<span className='ml-auto'>{project.year}</span>
 														</div>
 
-														<h3 className='mt-5 text-h5 leading-tight text-stone-900'>
-															{project.name}
-														</h3>
+														<h3 className='mt-5 text-h5 leading-tight text-stone-900'>{project.name}</h3>
 
 														<p className='mt-4 text-base leading-snug text-stone-500'>
 															{project.blurb}. {project.description}
@@ -120,10 +114,7 @@ const Stories = () => {
 
 														<ul className='mt-5 flex flex-wrap gap-x-3 gap-y-1'>
 															{project.stack.map((tech) => (
-																<li
-																	key={tech}
-																	className='font-mono text-micro uppercase tracking-wider text-stone-400'
-																>
+																<li key={tech} className='font-mono text-micro uppercase tracking-wider text-stone-400'>
 																	{tech}
 																</li>
 															))}
@@ -155,13 +146,8 @@ const Stories = () => {
 								className='story-cta group text-stone-900'
 								data-scramble-host
 							>
-								<span className='display text-h5 leading-none tabular-nums'>
-									{pad(projects.length)}
-								</span>
-								<Scramble
-									text='View all repositories'
-									className='display text-h5 leading-none'
-								/>
+								<span className='display text-h5 leading-none tabular-nums'>{pad(projects.length)}</span>
+								<Scramble text='View all repositories' className='display text-h5 leading-none' />
 								<span className='display text-h5 leading-none transition-transform duration-500 ease-[var(--ease-expo-out)] group-hover:translate-x-2'>
 									(→)
 								</span>

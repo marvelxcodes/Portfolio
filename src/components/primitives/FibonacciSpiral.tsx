@@ -2,19 +2,13 @@
 
 import { useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
-import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 import { goldenSpiral } from '@/lib/fibonacci';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 import { cn } from '@/lib/utils';
 
 const ARC_STROKE_WIDTH = 0.07;
 
-const FibonacciSpiral = ({
-	turns,
-	className
-}: {
-	turns: number;
-	className?: string;
-}) => {
+const FibonacciSpiral = ({ turns, className }: { turns: number; className?: string }) => {
 	const { squares, path, viewBox } = goldenSpiral(turns);
 	const root = useRef<SVGSVGElement>(null);
 
@@ -30,16 +24,8 @@ const FibonacciSpiral = ({
 				end: 'bottom bottom',
 				scrub: 0.6
 			};
-			gsap.fromTo(
-				'[data-arc]',
-				{ strokeDashoffset: 1 },
-				{ strokeDashoffset: 0, ease: 'none', scrollTrigger }
-			);
-			gsap.fromTo(
-				'[data-square]',
-				{ opacity: 0 },
-				{ opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger }
-			);
+			gsap.fromTo('[data-arc]', { strokeDashoffset: 1 }, { strokeDashoffset: 0, ease: 'none', scrollTrigger });
+			gsap.fromTo('[data-square]', { opacity: 0 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger });
 		}, element);
 
 		return () => context.revert();
@@ -67,14 +53,7 @@ const FibonacciSpiral = ({
 					/>
 				))}
 			</g>
-			<path
-				data-arc
-				d={path}
-				pathLength={1}
-				strokeDasharray={1}
-				stroke='var(--c-dim)'
-				strokeWidth={ARC_STROKE_WIDTH}
-			/>
+			<path data-arc d={path} pathLength={1} strokeDasharray={1} stroke='var(--c-dim)' strokeWidth={ARC_STROKE_WIDTH} />
 		</svg>
 	);
 };

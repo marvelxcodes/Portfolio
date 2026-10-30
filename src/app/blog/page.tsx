@@ -1,14 +1,14 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import PostList from '@/components/blog/PostList';
+import ArrowIcon from '@/components/primitives/ArrowIcon';
+import Label from '@/components/primitives/Label';
+import RevealLines from '@/components/primitives/RevealLines';
+import JsonLd from '@/components/seo/JsonLd';
 import { blog, person } from '@/data/portfolio';
 import { getAllPosts } from '@/lib/blog';
 import { blogSchema, sharedOpenGraph } from '@/lib/seo';
 import { formatPostDate } from '@/lib/utils';
-import ArrowIcon from '@/components/primitives/ArrowIcon';
-import Label from '@/components/primitives/Label';
-import RevealLines from '@/components/primitives/RevealLines';
-import PostList from '@/components/blog/PostList';
-import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
 	title: blog.title,
@@ -17,7 +17,13 @@ export const metadata: Metadata = {
 		canonical: '/blog',
 		types: { 'application/rss+xml': [{ url: '/blog/rss.xml', title: `${blog.title} — ${person.name}` }] }
 	},
-	openGraph: { ...sharedOpenGraph, type: 'website', url: '/blog', title: `${blog.title} — ${person.name}`, description: blog.description }
+	openGraph: {
+		...sharedOpenGraph,
+		type: 'website',
+		url: '/blog',
+		title: `${blog.title} — ${person.name}`,
+		description: blog.description
+	}
 };
 
 const BlogPage = async () => {
@@ -30,10 +36,18 @@ const BlogPage = async () => {
 
 			<div className='grid lg:grid-cols-2 lg:divide-x'>
 				<div className='tile flex flex-col justify-between gap-16 border-b p-(--gutter) pt-3 lg:min-h-(--tile-h)'>
-					<RevealLines as='h1' trigger='load' lines={[blog.title]} className='text-giant font-medium tracking-[-0.06em]' />
+					<RevealLines
+						as='h1'
+						trigger='load'
+						lines={[blog.title]}
+						className='text-giant font-medium tracking-[-0.06em]'
+					/>
 					<div className='flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between'>
 						<p className='max-w-[42ch]'>{blog.body}</p>
-						<a href='/blog/rss.xml' className='mono flex shrink-0 items-center gap-2 transition-opacity hover:opacity-50'>
+						<a
+							href='/blog/rss.xml'
+							className='mono flex shrink-0 items-center gap-2 transition-opacity hover:opacity-50'
+						>
 							RSS
 							<ArrowIcon direction='up-right' className='size-4' />
 						</a>

@@ -1,5 +1,5 @@
-import type { NextConfig } from 'next';
 import createMDX from '@next/mdx';
+import type { NextConfig } from 'next';
 
 const THIRTY_DAYS_SECONDS = 60 * 60 * 24 * 30;
 

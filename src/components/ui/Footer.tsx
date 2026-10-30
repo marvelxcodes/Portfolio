@@ -1,12 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
-import { footerColumns, builtWith, person, social } from '@/data/site';
 import DottedRule from '@/components/ui/DottedRule';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { builtWith, footerColumns, person, social } from '@/data/site';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 
 /**
  * The close, built from two references at once.
@@ -73,8 +73,7 @@ const Footer = () => {
 							<span className='eyebrow-word'>Available</span>
 						</p>
 						<p className='mt-5 text-h6 leading-snug text-cream-200'>
-							{person.availability} — building products end to end from{' '}
-							{person.locationLong}.
+							{person.availability} — building products end to end from {person.locationLong}.
 						</p>
 					</div>
 					<Link href='/contact' className='btn'>
@@ -90,9 +89,7 @@ const Footer = () => {
 					{footerColumns.map((column) => (
 						<div key={column.heading} data-footer-col className='flex flex-col gap-5'>
 							<DottedRule className='text-cream-100/25' />
-							<p className='font-mono text-sm uppercase tracking-tight text-cream-100'>
-								{column.heading}/
-							</p>
+							<p className='font-mono text-sm uppercase tracking-tight text-cream-100'>{column.heading}/</p>
 							<ul className='flex flex-col gap-3'>
 								{column.links.map((link) => (
 									<li key={link.label}>
@@ -113,15 +110,10 @@ const Footer = () => {
 
 				{/* juanmora's credits strip */}
 				<div className='flex flex-wrap items-center gap-x-8 gap-y-3 py-8'>
-					<p className='font-mono text-xs uppercase tracking-wider text-cream-200/45'>
-						Built using
-					</p>
+					<p className='font-mono text-xs uppercase tracking-wider text-cream-200/45'>Built using</p>
 					<ul className='flex flex-wrap items-center gap-x-6 gap-y-2'>
 						{builtWith.map((tool) => (
-							<li
-								key={tool}
-								className='font-mono text-xs uppercase tracking-wider text-cream-100/80'
-							>
+							<li key={tool} className='font-mono text-xs uppercase tracking-wider text-cream-100/80'>
 								{tool}
 							</li>
 						))}
@@ -152,28 +144,14 @@ const Footer = () => {
 					<ul className='flex items-center gap-5'>
 						{social.map((item) => (
 							<li key={item.label}>
-								<a
-									href={item.href}
-									target='_blank'
-									rel='noreferrer noopener'
-									aria-label={item.label}
-									className='block'
-								>
-									<Image
-										src={item.icon}
-										alt=''
-										width={18}
-										height={18}
-										className='icon-cream h-[18px] w-[18px]'
-									/>
+								<a href={item.href} target='_blank' rel='noreferrer noopener' aria-label={item.label} className='block'>
+									<Image src={item.icon} alt='' width={18} height={18} className='icon-cream h-[18px] w-[18px]' />
 								</a>
 							</li>
 						))}
 					</ul>
 
-					<p className='font-mono text-xs uppercase tracking-wider text-cream-200/45'>
-						{person.email}
-					</p>
+					<p className='font-mono text-xs uppercase tracking-wider text-cream-200/45'>{person.email}</p>
 				</div>
 			</footer>
 		</div>

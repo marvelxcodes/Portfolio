@@ -1,13 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { reasons, panelHeadline } from '@/data/site';
 import CharFill from '@/components/motion/CharFill';
-import Reveal from '@/components/motion/Reveal';
 import MorphShape from '@/components/motion/MorphShape';
+import Reveal from '@/components/motion/Reveal';
 import ShaderField, { PANEL_FIELD } from '@/components/ShaderField';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { panelHeadline, reasons } from '@/data/site';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 
 /**
  * juanmora.co's benefits scene: one plate holds at the top of the viewport
@@ -54,20 +54,12 @@ const Reasons = () => {
 	}, []);
 
 	return (
-		<section
-			ref={root}
-			id='reasons'
-			data-scheme='ink'
-			className='on-ink relative isolate z-10'
-		>
+		<section ref={root} id='reasons' data-scheme='ink' className='on-ink relative isolate z-10'>
 			{/* --- the plate that holds --- */}
 			<div className='pointer-events-none sticky top-0 z-0 h-svh overflow-hidden'>
 				<ShaderField palette={PANEL_FIELD} trigger={root} speed={0.35} opacity={0.9} />
 
-				<div
-					aria-hidden
-					className='absolute inset-0 flex flex-col justify-center gap-[0.02em] opacity-[0.07]'
-				>
+				<div aria-hidden className='absolute inset-0 flex flex-col justify-center gap-[0.02em] opacity-[0.07]'>
 					{panelHeadline.map((line, i) => (
 						<span
 							key={line}
@@ -90,8 +82,7 @@ const Reasons = () => {
 				<div
 					className='absolute inset-x-0 bottom-0 h-1/2'
 					style={{
-						background:
-							'radial-gradient(70% 100% at 50% 100%, rgba(217, 102, 58, 0.22), transparent 70%)'
+						background: 'radial-gradient(70% 100% at 50% 100%, rgba(217, 102, 58, 0.22), transparent 70%)'
 					}}
 				/>
 			</div>
@@ -116,10 +107,7 @@ const Reasons = () => {
 
 					<ul className='pb-[var(--section-lg)]'>
 						{reasons.map((reason) => (
-							<li
-								key={reason.index}
-								className='flex min-h-[68svh] items-center border-t border-cream-100/15'
-							>
+							<li key={reason.index} className='flex min-h-[68svh] items-center border-t border-cream-100/15'>
 								<Reveal
 									className='grid w-full gap-x-[var(--site-gutter)] gap-y-5 py-12 lg:grid-cols-12'
 									start='top 80%'
@@ -127,9 +115,7 @@ const Reasons = () => {
 									<span className='font-mono text-xs tabular-nums tracking-wider text-peach-300 lg:col-span-2'>
 										{reason.index}
 									</span>
-									<h3 className='display text-h4 text-cream-100 lg:col-span-5'>
-										{reason.lead}
-									</h3>
+									<h3 className='display text-h4 text-cream-100 lg:col-span-5'>{reason.lead}</h3>
 									<p className='max-w-[44ch] text-base leading-relaxed text-cream-300/70 lg:col-span-5'>
 										{reason.body}
 									</p>

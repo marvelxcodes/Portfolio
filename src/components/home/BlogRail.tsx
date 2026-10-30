@@ -1,14 +1,14 @@
 'use client';
 
 import { useRef } from 'react';
-import { blog } from '@/data/portfolio';
-import type { PostSummary } from '@/lib/blog';
-import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
-import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
 import FillLink from '@/components/primitives/FillLink';
 import Label from '@/components/primitives/Label';
 import RevealLines from '@/components/primitives/RevealLines';
+import { blog } from '@/data/portfolio';
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import type { PostSummary } from '@/lib/blog';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 import PostCard from './PostCard';
 
 const DRAG_THRESHOLD_PX = 6;
@@ -80,7 +80,11 @@ const useStaggeredParallax = (rail: React.RefObject<HTMLDivElement | null>) => {
 				gsap.fromTo(
 					card,
 					{ yPercent: lift },
-					{ yPercent: -lift, ease: 'none', scrollTrigger: { trigger: element, start: 'top bottom', end: 'bottom top', scrub: true } }
+					{
+						yPercent: -lift,
+						ease: 'none',
+						scrollTrigger: { trigger: element, start: 'top bottom', end: 'bottom top', scrub: true }
+					}
 				);
 			});
 		});
@@ -114,10 +118,20 @@ const BlogRail = ({ posts }: { posts: PostSummary[] }) => {
 						<Label>{blog.label}</Label>
 					</div>
 					<div className='grid grid-cols-2 divide-x border-l lg:border-b'>
-						<button type='button' aria-label='Previous posts' onClick={() => scrollRail(-1)} className='fill flex items-center justify-center text-dim [--fill:var(--c-plate)] hover:text-ink'>
+						<button
+							type='button'
+							aria-label='Previous posts'
+							onClick={() => scrollRail(-1)}
+							className='fill flex items-center justify-center text-dim [--fill:var(--c-plate)] hover:text-ink'
+						>
 							<ArrowIcon direction='left' />
 						</button>
-						<button type='button' aria-label='Next posts' onClick={() => scrollRail(1)} className='fill flex items-center justify-center [--fill:var(--c-plate)]'>
+						<button
+							type='button'
+							aria-label='Next posts'
+							onClick={() => scrollRail(1)}
+							className='fill flex items-center justify-center [--fill:var(--c-plate)]'
+						>
 							<ArrowIcon />
 						</button>
 					</div>

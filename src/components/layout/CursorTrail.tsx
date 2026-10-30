@@ -15,8 +15,7 @@ const CursorTrail = () => {
 
 	useEffect(() => {
 		const canTrail =
-			window.matchMedia('(pointer: fine)').matches &&
-			!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		if (!canTrail) return;
 
 		let next = 0;

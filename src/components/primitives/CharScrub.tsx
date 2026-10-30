@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, type ElementType, type PropsWithChildren } from 'react';
+import { type ElementType, type PropsWithChildren, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 import { gsap, prefersReducedMotion, registerGsap, SplitText } from '@/lib/gsap';
 

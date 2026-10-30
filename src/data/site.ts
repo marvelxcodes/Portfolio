@@ -8,12 +8,12 @@ export const person = {
 	handle: 'marvelxcodes',
 	role: 'Full Stack Engineer',
 	location: 'India',
-	locationLong: 'Chennai, India',
+	locationLong: 'Bengaluru, India',
 	tagline: 'I build everything from web apps to a Linux distro.',
 	summary:
 		'Indie hacker and full stack engineer. I build products end to end — interfaces that feel inevitable, backends that hold under load, and the occasional operating system when the itch gets bad enough.',
 	availability: 'Open to select engagements',
-	email: 'hello@marvelxcodes.dev',
+	email: 'ramakrishnan@crownos.org',
 	since: 2021
 } as const;
 
@@ -22,7 +22,11 @@ export const social = [
 	{ label: 'LinkedIn', href: 'https://linkedin.com/in/marvelxcodes', icon: '/social-media/linkedin.svg' },
 	{ label: 'X', href: 'https://x.com/marvelxcodes', icon: '/social-media/x.svg' },
 	{ label: 'Instagram', href: 'https://instagram.com/marvelxcodes', icon: '/social-media/instagram.svg' },
-	{ label: 'Stack Overflow', href: 'https://stackoverflow.com/users/marvelxcodes', icon: '/social-media/stack-overflow.svg' }
+	{
+		label: 'Stack Overflow',
+		href: 'https://stackoverflow.com/users/marvelxcodes',
+		icon: '/social-media/stack-overflow.svg'
+	}
 ] as const;
 
 export const nav = [
@@ -48,9 +52,9 @@ export const heroFaces = { front: 'SHIP', back: 'MAKE' } as const;
 
 export const stats = [
 	{ value: 72, suffix: '+', label: 'Public repositories shipped' },
-	{ value: 5, suffix: '', label: 'Years writing production code' },
-	{ value: 12, suffix: '', label: 'Languages and runtimes in rotation' },
-	{ value: 1, suffix: '', label: 'Linux distribution, in progress' }
+	{ value: 5, suffix: '+', label: 'Years writing production code' },
+	{ value: 12, suffix: '+', label: 'Languages and runtimes in rotation' },
+	{ value: 20, suffix: '+', label: 'Happy Clients' }
 ] as const;
 
 /* ---- chapter 02: the stack ---------------------------------------------- */
@@ -159,7 +163,7 @@ export const projects: Project[] = [
 	{
 		index: '02',
 		name: 'Rankcraft',
-		year: '2024',
+		year: '2023',
 		blurb: 'Etsy SEO analytics for sellers who need the numbers',
 		description:
 			'A SaaS analytics platform that scrapes, scores and forecasts Etsy listing performance. Built for a client, shipped end to end — ingestion pipeline, scoring engine, dashboard and billing.',

@@ -10,8 +10,7 @@
 
 export const SHAPES = {
 	/** four-pointed concave star — the anchor mark */
-	burst:
-		'M50 0C50 27.6 27.6 50 0 50c27.6 0 50 22.4 50 50 0-27.6 22.4-50 50-50C72.4 50 50 27.6 50 0Z',
+	burst: 'M50 0C50 27.6 27.6 50 0 50c27.6 0 50 22.4 50 50 0-27.6 22.4-50 50-50C72.4 50 50 27.6 50 0Z',
 	/** sharp eight-vertex sparkle */
 	star: 'M50 0 61 39 100 50 61 61 50 100 39 61 0 50 39 39Z',
 	/** lightning */
@@ -57,7 +56,7 @@ export const BRACE_PATH =
 
 export const Brace = () => (
 	<span className='brace' aria-hidden>
-		<svg viewBox='0 0 27 78' focusable='false'>
+		<svg viewBox='0 0 27 78' focusable='false' aria-hidden>
 			<path d={BRACE_PATH} />
 		</svg>
 	</span>

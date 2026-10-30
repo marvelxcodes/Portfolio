@@ -1,13 +1,16 @@
-import { person } from '@/data/portfolio';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
 import Label from '@/components/primitives/Label';
+import { person } from '@/data/portfolio';
 
 type ShareLinksProps = { title: string; url: string };
 
 const ShareLinks = ({ title, url }: ShareLinksProps) => {
 	const encodedUrl = encodeURIComponent(url);
 	const targets = [
-		{ label: 'X', href: `https://x.com/intent/post?text=${encodeURIComponent(title)}&url=${encodedUrl}&via=${person.handle}` },
+		{
+			label: 'X',
+			href: `https://x.com/intent/post?text=${encodeURIComponent(title)}&url=${encodedUrl}&via=${person.handle}`
+		},
 		{ label: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
 		{ label: 'RSS', href: '/blog/rss.xml' }
 	];

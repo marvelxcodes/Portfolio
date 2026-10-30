@@ -14,6 +14,8 @@ export const person = {
 	since: 2021
 } as const;
 
+export const mailtoHref = `mailto:${person.email}`;
+
 export const siteUrl = 'https://ramakrishnan.crownos.org';
 
 export const sections = [
@@ -68,7 +70,6 @@ export const about = {
 	paragraphs: [
 		'Creator of CrownOS.',
 		'Software Engineer and Systems Builder in Bengaluru, working with Rust, Linux, Wayland, React, Next.js, TypeScript and AI.',
-		'In last five years, my work spans from SaaS platforms to 3D Modeling to Linux programs to AI workflows.',
 		'Over the past five years, I’ve worked across the stack and beyond — building SaaS platforms, 3D modeling, building low level software, and AI-powered workflows.'
 	]
 } as const;
@@ -79,7 +80,7 @@ export const stats = {
 	repositories: { value: '72+', label: 'Public repositories shipped' },
 	years: { value: '5+', label: 'Years writing production code' },
 	languages: { value: '12', label: 'Languages and runtimes in rotation' },
-	distro: { value: '01', label: 'Linux distribution, in production' }
+	distro: { value: '20+', label: 'Happy Clients' }
 } as const satisfies Record<string, Stat>;
 
 export type Discipline = {
@@ -97,45 +98,25 @@ export const expertise = {
 		{
 			title: 'Product engineering',
 			body: 'Multi-tenant applications with billing, auth and the boring reliability work that keeps customers. Shipped end to end, owned after launch.',
-			focus: [
-				'Schema & API design',
-				'Auth, billing, tenancy',
-				'Deploy pipelines',
-				'Production on-call'
-			],
+			focus: ['Schema & API design', 'Auth, billing, tenancy', 'Deploy pipelines', 'Production on-call'],
 			icon: 'rings'
 		},
 		{
 			title: 'Interface & motion',
 			body: 'Where the product earns its trust — motion, type, and state that never stutters. Scroll choreography and shader work that directs attention.',
-			focus: [
-				'React, Next.js, Svelte',
-				'GSAP & WebGL',
-				'Design systems',
-				'Landing pages'
-			],
+			focus: ['React, Next.js, Svelte', 'GSAP & WebGL', 'Design systems', 'Landing pages'],
 			icon: 'globe'
 		},
 		{
 			title: 'Systems & low level',
 			body: 'Rust, Kotlin and a stubborn interest in what happens under the runtime. Services, CLIs and an operating system built from the compositor up.',
-			focus: [
-				'Rust services & CLIs',
-				'Linux & Wayland',
-				'WebAssembly',
-				'Internal tooling'
-			],
+			focus: ['Rust services & CLIs', 'Linux & Wayland', 'WebAssembly', 'Internal tooling'],
 			icon: 'burst'
 		},
 		{
 			title: 'AI products',
 			body: 'Agent-native tooling and pipelines that turn unstructured input into decisions — from ranking résumés to weighting a backlog by revenue.',
-			focus: [
-				'Claude Code plugins',
-				'Embeddings & clustering',
-				'Transcript extraction',
-				'Local models'
-			],
+			focus: ['Claude Code plugins', 'Embeddings & clustering', 'Transcript extraction', 'Local models'],
 			icon: 'orbit'
 		}
 	] satisfies Discipline[]
@@ -149,19 +130,13 @@ export type Project = {
 	stack: string[];
 	accent: string;
 	logo?: string;
+	gallery?: readonly string[];
 	onAccent: 'light' | 'dark';
 	cta?: { label: string; href: string };
 };
 
 export const work = {
-	title: 'Work',
-	label: 'Selected work',
-	intro:
-		'Products I have taken from an empty repository to real users — an operating system, RL infrastructure for AI labs, a compliance platform and an SEO tool. Each one shipped, and each one is still being sharpened.',
-	cta: {
-		label: 'All repositories',
-		href: 'https://github.com/marvelxcodes?tab=repositories'
-	},
+	title: ['Selected', 'Projects'],
 	projects: [
 		{
 			name: 'CrownOS',
@@ -206,6 +181,7 @@ export const work = {
 			stack: ['Next.js', 'TypeScript', 'SEO', 'SaaS'],
 			accent: '#9337fc',
 			logo: '/logos/rankcraft.webp',
+			gallery: [1, 2, 3, 4, 5, 6].map((n) => `/projects/rankcraft${n}.png`),
 			onAccent: 'light'
 		}
 	] satisfies Project[]
@@ -238,63 +214,23 @@ export const principles = {
 	]
 } as const;
 
-export const process = [
-	{
-		title: 'Understand the shape',
-		body: 'Before a line of code: what the thing actually has to do, who breaks it, and what "done" looks like. Most projects fail here, quietly.'
-	},
-	{
-		title: 'Build the spine',
-		body: 'Data model and critical path first. If the hard half works, the rest is decoration. If it does not, no amount of polish saves it.'
-	},
-	{
-		title: 'Make it feel authored',
-		body: 'Motion, type and detail arrive last and matter enormously. This is where a competent build becomes one people remember.'
-	},
-	{
-		title: 'Ship, then sharpen',
-		body: 'Production is the only honest test environment. Measure, cut what nobody uses, and keep tightening the parts that carry weight.'
-	}
-] as const;
-
 export const blog = {
 	title: 'Blog',
 	label: 'Writing in public',
 	tagline: ['Notes from', 'the build.'],
-	description:
-		'Notes on systems, motion and shipping software alone — written by Rama Krishnan V.',
+	description: 'Notes on systems, motion and shipping software alone — written by Rama Krishnan V.',
 	body: 'Long-form writing about the parts of the work that are hard to explain in a commit message — systems, motion, and what it actually costs to ship something alone.'
 } as const;
 
 export const cta = {
-	rows: [['Let’s', 'build'], ['something']],
-	href: '/contact'
+	rows: [['Let’s', 'ship'], ['something']],
+	href: mailtoHref
 } as const;
 
 export const footer = {
 	tagline: 'Interfaces that feel inevitable.',
 	closer: 'Let’s build something people remember',
 	action: 'Start a project'
-} as const;
-
-export const contactPage = {
-	heading: ['Tell me', 'the shape', 'of it.'],
-	body: 'What it has to do, who it is for, and roughly when. That is enough for a first reply — usually within a day.',
-	scopes: [
-		'Product engineering',
-		'SaaS platforms',
-		'Motion & WebGL',
-		'Landing pages',
-		'Design systems',
-		'Systems & tooling'
-	],
-	budgets: [
-		'Prefer not to say',
-		'Under $2k',
-		'$2k – $6k',
-		'$6k – $15k',
-		'$15k+'
-	]
 } as const;
 
 export const notFound = {

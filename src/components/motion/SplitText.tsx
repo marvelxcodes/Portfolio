@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, type ElementType, type ReactNode } from 'react';
-import { gsap, SplitText as GsapSplitText, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { type ElementType, type ReactNode, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { SplitText as GsapSplitText, gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 
 type Mode = 'lines' | 'words' | 'chars';
 
@@ -63,16 +63,14 @@ const SplitReveal = ({
 
 		const ctx = gsap.context(() => {
 			const split = GsapSplitText.create(el, {
-				type:
-					mode === 'chars' ? 'chars,words,lines' : mode === 'words' ? 'words,lines' : 'lines',
+				type: mode === 'chars' ? 'chars,words,lines' : mode === 'words' ? 'words,lines' : 'lines',
 				linesClass: 'split-line',
 				wordsClass: 'split-word',
 				charsClass: 'char',
 				mask: mode === 'chars' ? undefined : mode,
 				autoSplit: true,
 				onSplit: (self) => {
-					const targets =
-						mode === 'chars' ? self.chars : mode === 'words' ? self.words : self.lines;
+					const targets = mode === 'chars' ? self.chars : mode === 'words' ? self.words : self.lines;
 
 					gsap.set(el, { opacity: 1 });
 					if (!targets?.length) return undefined;
@@ -82,7 +80,7 @@ const SplitReveal = ({
 					// narrow viewport gets no indent instead of overflowing.
 					const step = window.innerWidth < 768 ? 0 : cascade;
 					if (cascade) {
-						targets.forEach((piece, i) => gsap.set(piece, { x: i * step }));
+						gsap.set(targets, { x: (i) => i * step });
 					}
 
 					return gsap.fromTo(
@@ -95,9 +93,7 @@ const SplitReveal = ({
 							ease,
 							delay,
 							stagger,
-							scrollTrigger: immediate
-								? undefined
-								: { trigger: el, start: 'top 88%', once: true }
+							scrollTrigger: immediate ? undefined : { trigger: el, start: 'top 88%', once: true }
 						}
 					);
 				}

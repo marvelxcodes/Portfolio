@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { clocks, person, sections } from '@/data/portfolio';
-import { parseClockTime, useZonedTime } from '@/hooks/useZonedTime';
 import AnalogClock from '@/components/primitives/AnalogClock';
+import { clocks, mailtoHref, sections } from '@/data/portfolio';
+import { parseClockTime, useZonedTime } from '@/hooks/useZonedTime';
+import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
 import { useSectionHref } from './useSectionHref';
-import { cn } from '@/lib/utils';
 
 type MobileMenuProps = { open: boolean; onClose: () => void };
 
@@ -23,7 +23,10 @@ const MenuClock = ({ clock }: { clock: (typeof clocks)[number] }) => {
 
 const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
 	const sectionHref = useSectionHref();
-	const items = [...sections.map((section) => ({ label: section.label, href: sectionHref(section.id) })), { label: 'Contact', href: `mailto:${person.email}` }];
+	const items = [
+		...sections.map((section) => ({ label: section.label, href: sectionHref(section.id) })),
+		{ label: 'Contact', href: mailtoHref }
+	];
 
 	useEffect(() => {
 		if (!open) return;
@@ -55,7 +58,10 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
 							className='fill fill-y flex w-full items-end overflow-hidden px-3 pb-3 text-[2rem] font-medium tracking-[-0.04em] [--fill:var(--c-plate)]'
 						>
 							<span
-								className={cn('block transition-transform duration-1000 ease-out-expo', open ? 'translate-y-0' : 'translate-y-full')}
+								className={cn(
+									'block transition-transform duration-1000 ease-out-expo',
+									open ? 'translate-y-0' : 'translate-y-full'
+								)}
 								style={{ transitionDelay: open ? `${0.15 + index * 0.05}s` : '0s' }}
 							>
 								{item.label}

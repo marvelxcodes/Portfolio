@@ -1,16 +1,16 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
-import { person, social, media, heroFaces } from '@/data/site';
+import Magnetic from '@/components/motion/Magnetic';
 import MorphHeadline from '@/components/motion/MorphHeadline';
 import SplitReveal from '@/components/motion/SplitText';
-import Magnetic from '@/components/motion/Magnetic';
-import { Brace } from '@/components/ui/shapes';
 import ShaderField, { HERO_FIELD } from '@/components/ShaderField';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { Brace } from '@/components/ui/shapes';
+import { heroFaces, media, person, social } from '@/data/site';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 
 /**
  * Opening scene — juanmora.co's hero, mechanics and all.
@@ -44,12 +44,7 @@ const Hero = () => {
 						scrub: true
 					}
 				})
-				.fromTo(
-					'[data-hero-media]',
-					{ y: 0, opacity: 1 },
-					{ y: 270, opacity: 0.6, ease: 'none' },
-					0
-				)
+				.fromTo('[data-hero-media]', { y: 0, opacity: 1 }, { y: 270, opacity: 0.6, ease: 'none' }, 0)
 				.to('[data-hero-copy]', { yPercent: -18, opacity: 0.1, ease: 'none' }, 0)
 				.to('[data-hero-cue]', { opacity: 0, duration: 0.35, ease: 'none' }, 0);
 		}, root);
@@ -58,11 +53,7 @@ const Hero = () => {
 	}, []);
 
 	return (
-		<section
-			ref={root}
-			id='hero'
-			className='frame relative z-10 h-svh min-h-[38rem] bg-peach-300'
-		>
+		<section ref={root} id='hero' className='frame relative z-10 h-svh min-h-[38rem] bg-peach-300'>
 			{/* the drifting plate: a live field, the portrait on top of it, and a
 			    single-colour wash to bind the two into one surface */}
 			<div data-hero-media className='frame-media'>
@@ -101,8 +92,7 @@ const Hero = () => {
 							flair: {
 								0: {
 									name: 'burst',
-									className:
-										'-top-[0.14em] left-[0.02em] h-[0.55em] w-[0.55em] text-cobalt-500'
+									className: '-top-[0.14em] left-[0.02em] h-[0.55em] w-[0.55em] text-cobalt-500'
 								}
 							}
 						},
@@ -111,20 +101,17 @@ const Hero = () => {
 							flair: {
 								3: {
 									name: 'bolt',
-									className:
-										'bottom-[0.06em] left-[0.06em] h-[0.72em] w-[0.4em] text-cream-50/90'
+									className: 'bottom-[0.06em] left-[0.06em] h-[0.72em] w-[0.4em] text-cream-50/90'
 								},
 								5: {
 									name: 'chevron',
-									className:
-										'-top-[0.06em] left-[0.1em] h-[0.42em] w-[0.3em] text-peach-400'
+									className: '-top-[0.06em] left-[0.1em] h-[0.42em] w-[0.3em] text-peach-400'
 								}
 							},
 							counter: {
 								at: 7,
 								value: String(person.since),
-								className:
-									'font-mono text-[0.09em] uppercase tracking-[0.3em] text-cream-50/60'
+								className: 'font-mono text-[0.09em] uppercase tracking-[0.3em] text-cream-50/60'
 							}
 						}
 					]}
@@ -171,21 +158,14 @@ const Hero = () => {
 							</Link>
 						</Magnetic>
 						<Magnetic>
-							<a
-								href={social[0].href}
-								target='_blank'
-								rel='noreferrer noopener'
-								className='btn btn-onmedia'
-							>
+							<a href={social[0].href} target='_blank' rel='noreferrer noopener' className='btn btn-onmedia'>
 								GitHub
 								<span aria-hidden>↗</span>
 							</a>
 						</Magnetic>
 					</div>
 
-					<p className='font-mono text-xs uppercase tracking-wider text-cream-50/70'>
-						{person.availability}
-					</p>
+					<p className='font-mono text-xs uppercase tracking-wider text-cream-50/70'>{person.availability}</p>
 				</div>
 			</div>
 		</section>

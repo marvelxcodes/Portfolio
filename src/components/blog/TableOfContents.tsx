@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { PostHeading } from '@/lib/blog';
 import Label from '@/components/primitives/Label';
+import type { PostHeading } from '@/lib/blog';
 import { cn } from '@/lib/utils';
 
 const ACTIVE_BAND = '-20% 0px -70% 0px';

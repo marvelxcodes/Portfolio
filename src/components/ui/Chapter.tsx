@@ -9,12 +9,7 @@ type ChapterProps = {
 
 /** Section marker: a dot eyebrow on the left, the running count on the right. */
 const Chapter = ({ index, total, title, className }: ChapterProps) => (
-	<div
-		className={cn(
-			'flex items-center justify-between gap-6 border-b border-current/15 pb-5',
-			className
-		)}
-	>
+	<div className={cn('flex items-center justify-between gap-6 border-b border-current/15 pb-5', className)}>
 		<p className='eyebrow'>
 			<span className='eyebrow-word'>{title}</span>
 		</p>

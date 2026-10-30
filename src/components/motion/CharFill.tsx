@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef, type ElementType, type ReactNode } from 'react';
-import { cn } from '@/lib/utils';
-import { gsap, SplitText, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { type ElementType, type ReactNode, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap, SplitText } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 type CharFillProps = {
 	children: ReactNode;
@@ -22,13 +22,7 @@ type CharFillProps = {
  * Built inside `onSplit` so that a webfont landing mid-scroll re-splits the copy
  * *and* rebuilds the tween against the new characters.
  */
-const CharFill = ({
-	children,
-	as: Tag = 'p',
-	className,
-	start = 'top 80%',
-	end = 'bottom 60%'
-}: CharFillProps) => {
+const CharFill = ({ children, as: Tag = 'p', className, start = 'top 80%', end = 'bottom 60%' }: CharFillProps) => {
 	const ref = useRef<HTMLElement>(null);
 
 	useIsomorphicLayoutEffect(() => {

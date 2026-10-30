@@ -1,12 +1,12 @@
 'use client';
 
 import { useRef } from 'react';
-import { processSteps } from '@/data/site';
-import Chapter from '@/components/ui/Chapter';
-import SplitReveal from '@/components/motion/SplitText';
 import MorphShape from '@/components/motion/MorphShape';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import SplitReveal from '@/components/motion/SplitText';
+import Chapter from '@/components/ui/Chapter';
+import { processSteps } from '@/data/site';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 
 /**
  * How the work actually happens. The heading pins on the left while the steps
@@ -42,11 +42,7 @@ const Process = () => {
 	}, []);
 
 	return (
-		<section
-			ref={root}
-			id='process'
-			className='relative z-10 bg-cream-100 py-[var(--section-lg)] text-stone-900'
-		>
+		<section ref={root} id='process' className='relative z-10 bg-cream-100 py-[var(--section-lg)] text-stone-900'>
 			<div className='shell'>
 				<Chapter index='05' total='07' title='Process' />
 
@@ -62,9 +58,8 @@ const Process = () => {
 								</SplitReveal>
 							</h2>
 							<p className='mt-8 max-w-[38ch] text-base leading-relaxed text-stone-500'>
-								Every project runs the same shape. It is not complicated — it is
-								just the order that keeps a build from unravelling somewhere
-								around week three.
+								Every project runs the same shape. It is not complicated — it is just the order that keeps a build from
+								unravelling somewhere around week three.
 							</p>
 
 							<MorphShape
@@ -86,12 +81,8 @@ const Process = () => {
 										{step.index}
 									</span>
 									<div>
-										<h3 className='text-h6 leading-tight text-stone-900'>
-											{step.title}
-										</h3>
-										<p className='mt-3 max-w-[54ch] text-sm leading-relaxed text-stone-500'>
-											{step.body}
-										</p>
+										<h3 className='text-h6 leading-tight text-stone-900'>{step.title}</h3>
+										<p className='mt-3 max-w-[54ch] text-sm leading-relaxed text-stone-500'>{step.body}</p>
 									</div>
 								</div>
 							</li>

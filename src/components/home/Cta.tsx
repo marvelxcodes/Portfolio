@@ -1,11 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import { useRef } from 'react';
+import ArrowIcon from '@/components/primitives/ArrowIcon';
 import { cta } from '@/data/portfolio';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
-import ArrowIcon from '@/components/primitives/ArrowIcon';
 import { cn } from '@/lib/utils';
 
 const wordClass = 'px-[0.06em] text-mega font-medium uppercase leading-[1] tracking-[-0.06em]';
@@ -25,7 +24,11 @@ const Cta = () => {
 				gsap.fromTo(
 					row,
 					{ xPercent: distance },
-					{ xPercent: 0, ease: 'none', scrollTrigger: { trigger: element, start: 'top bottom', end: 'center center', scrub: true } }
+					{
+						xPercent: 0,
+						ease: 'none',
+						scrollTrigger: { trigger: element, start: 'top bottom', end: 'center center', scrub: true }
+					}
 				);
 			});
 		}, element);
@@ -36,28 +39,28 @@ const Cta = () => {
 		<section
 			ref={root}
 			aria-label='Get in touch'
-			className='relative z-10 flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center gap-0 overflow-hidden border-t py-24'
+			className='relative z-10 flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center gap-0 overflow-hidden border-t px-(--gutter) py-24'
 		>
-			<div data-drift='-18' className='flex justify-between gap-4 pr-[12%]'>
+			<div data-drift='-18' className='flex justify-around gap-4'>
 				{topRow.map((word) => (
 					<span key={word} className={cn(wordClass, 'bg-ink text-paper')}>
 						{word}
 					</span>
 				))}
 			</div>
-			<div data-drift='18' className='flex pl-[8%] lg:pl-[21%]'>
+			<div data-drift='18' className='flex justify-center'>
 				{bottomRow.map((word) => (
 					<span key={word} className={cn(wordClass, 'bg-paper text-ink')}>
 						{word}
 					</span>
 				))}
-				<Link
+				<a
 					href={cta.href}
 					aria-label='Start a project'
-					className='fill flex aspect-square items-center justify-center bg-plate text-ink [--fill:var(--c-ink)] hover:text-paper'
+					className='fill flex size-[1em] shrink-0 items-center justify-center bg-plate text-mega text-ink [--fill:var(--c-ink)] hover:text-paper'
 				>
-					<ArrowIcon className='size-[0.55em] text-mega' />
-				</Link>
+					<ArrowIcon className='size-[0.55em]' />
+				</a>
 			</div>
 		</section>
 	);

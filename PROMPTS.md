@@ -5,10 +5,10 @@ photograph (`public/myself.jpg`), which is a close phone selfie — usable, but 
 is the weakest thing on the page. Generate replacements and save them at the
 **same paths**; nothing in the code needs to change.
 
-| Path | Size | Used by | CSS treatment applied on top |
-| --- | --- | --- | --- |
-| `public/portrait-hero.jpg` | 1200 × 1600 (3:4) | `Hero` — full-bleed behind the headline | `mix-blend-luminosity`, a peach `mix-blend-color` wash, a flat `ink/56%` scrim, and two gradient scrims |
-| `public/portrait-about.jpg` | 1000 × 1000 (1:1) | `Curious` — the portrait panel beside the toolkit | a peach `multiply` wash at 25% |
+| Path                        | Size              | Used by                                           | CSS treatment applied on top                                                                            |
+| --------------------------- | ----------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `public/portrait-hero.jpg`  | 1200 × 1600 (3:4) | `Hero` — full-bleed behind the headline           | `mix-blend-luminosity`, a peach `mix-blend-color` wash, a flat `ink/56%` scrim, and two gradient scrims |
+| `public/portrait-about.jpg` | 1000 × 1000 (1:1) | `Curious` — the portrait panel beside the toolkit | a peach `multiply` wash at 25%                                                                          |
 
 Because the site desaturates and re-tints both images, **do not** ask for a
 colourful result — ask for tonal range. Contrast and silhouette are what

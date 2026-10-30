@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type RefObject } from 'react';
+import { type RefObject, useEffect, useState } from 'react';
 
 export const useInView = (ref: RefObject<Element | null>, rootMargin = '0px 0px -15% 0px') => {
 	const [inView, setInView] = useState(false);

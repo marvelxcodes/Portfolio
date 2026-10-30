@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import { cn } from '@/lib/utils';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 type CounterProps = {
 	value: number;

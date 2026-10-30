@@ -2,16 +2,16 @@ import type { Metadata, Viewport } from 'next';
 import type { PropsWithChildren } from 'react';
 
 import './globals.css';
-import { fontVariables } from '@/fonts';
-import { person, siteUrl } from '@/data/portfolio';
-import SmoothScroll from '@/components/providers/SmoothScroll';
 import HalftoneCanvas from '@/components/gl/HalftoneCanvas';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import Preloader from '@/components/layout/Preloader';
 import CursorTrail from '@/components/layout/CursorTrail';
-import { themeBootScript } from '@/lib/theme';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+import Preloader from '@/components/layout/Preloader';
+import SmoothScroll from '@/components/providers/SmoothScroll';
+import { person, siteUrl } from '@/data/portfolio';
+import { fontVariables } from '@/fonts';
 import { sharedOpenGraph } from '@/lib/seo';
+import { themeBootScript } from '@/lib/theme';
 
 const title = `${person.name} — ${person.role}`;
 
@@ -58,6 +58,7 @@ export const viewport: Viewport = {
 const RootLayout = ({ children }: PropsWithChildren) => (
 	<html lang='en' className={fontVariables} suppressHydrationWarning>
 		<head>
+			{/* biome-ignore lint/security/noDangerouslySetInnerHtml: static theme script must run before hydration */}
 			<script id='theme-boot' dangerouslySetInnerHTML={{ __html: themeBootScript }} />
 		</head>
 		<body className='relative antialiased'>

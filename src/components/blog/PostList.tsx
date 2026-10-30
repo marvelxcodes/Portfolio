@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import type { PostSummary } from '@/lib/blog';
 import ArrowIcon from '@/components/primitives/ArrowIcon';
 import Label from '@/components/primitives/Label';
+import type { PostSummary } from '@/lib/blog';
 import { formatPostDate, pad } from '@/lib/utils';
 
 const ALL_TAGS = 'All';
@@ -25,6 +25,7 @@ const PostList = ({ posts }: { posts: PostSummary[] }) => {
 						{pad(visibleCount)} / {pad(posts.length)}
 					</span>
 				</div>
+				{/* biome-ignore lint/a11y/useSemanticElements: fieldset's min-content sizing breaks the wrapping button row */}
 				<div role='group' aria-label='Filter by topic' className='flex flex-wrap gap-px'>
 					{tags.map((tag) => (
 						<button

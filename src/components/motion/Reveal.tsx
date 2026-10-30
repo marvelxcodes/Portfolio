@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, type ElementType, type ReactNode } from 'react';
-import { gsap, registerGsap, prefersReducedMotion } from '@/lib/gsap';
+import { type ElementType, type ReactNode, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { gsap, prefersReducedMotion, registerGsap } from '@/lib/gsap';
 
 type RevealProps = {
 	children: ReactNode;

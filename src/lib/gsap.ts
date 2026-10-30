@@ -1,9 +1,9 @@
 'use client';
 
 import { gsap } from 'gsap';
+import { CustomEase } from 'gsap/CustomEase';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
-import { CustomEase } from 'gsap/CustomEase';
 
 let registered = false;
 

@@ -1,8 +1,8 @@
 'use client';
 
+import AnalogClock from '@/components/primitives/AnalogClock';
 import type { clocks } from '@/data/portfolio';
 import { parseClockTime, useZonedTime } from '@/hooks/useZonedTime';
-import AnalogClock from '@/components/primitives/AnalogClock';
 
 const FooterClock = ({ clock }: { clock: (typeof clocks)[number] }) => {
 	const time = useZonedTime(clock.timeZone);

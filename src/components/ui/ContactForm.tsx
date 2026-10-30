@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { cn } from '@/lib/utils';
 import Magnetic from '@/components/motion/Magnetic';
+import { cn } from '@/lib/utils';
 
 type ContactFormProps = {
 	services: string[];
@@ -22,9 +22,7 @@ const ContactForm = ({ services, email }: ContactFormProps) => {
 	const [scope, setScope] = useState<string[]>([]);
 
 	const toggle = (service: string) =>
-		setScope((prev) =>
-			prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
-		);
+		setScope((prev) => (prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]));
 
 	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();

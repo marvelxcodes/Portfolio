@@ -1,26 +1,17 @@
-import { about } from '@/data/portfolio';
 import CharScrub from '@/components/primitives/CharScrub';
 import FibonacciSpiral from '@/components/primitives/FibonacciSpiral';
 import RevealLines from '@/components/primitives/RevealLines';
+import { about } from '@/data/portfolio';
 import Stats from './Stats';
 
 const PORTRAIT_TURNS = 8;
 const LANDSCAPE_TURNS = 9;
 
 const About = () => (
-	<section
-		id='about'
-		className='relative z-10 scroll-mt-(--header-h) border-t bg-paper'
-	>
+	<section id='about' className='relative z-10 scroll-mt-(--header-h) border-t bg-paper'>
 		<div className='relative'>
-			<FibonacciSpiral
-				turns={PORTRAIT_TURNS}
-				className='absolute inset-0 size-full lg:hidden'
-			/>
-			<FibonacciSpiral
-				turns={LANDSCAPE_TURNS}
-				className='absolute inset-0 hidden size-full lg:block'
-			/>
+			<FibonacciSpiral turns={PORTRAIT_TURNS} className='absolute inset-0 size-full lg:hidden' />
+			<FibonacciSpiral turns={LANDSCAPE_TURNS} className='absolute inset-0 hidden size-full lg:block' />
 			<div className='relative grid lg:grid-cols-2 lg:divide-x'>
 				<div className='p-(--gutter)'>
 					<RevealLines
